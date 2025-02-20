@@ -3,20 +3,21 @@ BanditDialogues = BanditDialogues or {
     dialogOptions = {}
 }
 
--- Tabela principal de diálogos, dividida por tópico
-BanditDialogues.dialogues = {
-    normal_speak   = {},
-    friendly_speak = {},
-    hostile_speak  = {},
-}
+BanditDialogues.dialogues = {}
 
 ------------------------------------------------
--- 1) Adicionar diálogos com table.insert
+--- Add Dialogs
 ------------------------------------------------
---- Adiciona um novo par de falas (player/bandit) a um tópico
----@param topic string - ex: "normal_speak"
----@param playerLine string - falas do jogador
----@param banditLine string - falas do bandido
+--- Add dialog with player and bandit to topic
+--- @param topic string - example: "friendly"
+--- @param playerLine string - Player speak
+--- @param banditLine string - Bandit speak
+--- @param earnBoreMin int - Min Bored to change
+--- @param earnBoreMax int - Max Bored to change
+--- @param earnRelationMin int - Min Relation to change
+--- @param earnRelationMax int - Max Relation to change
+--- @param jokeResponse string - Response to Joke only
+
 function BanditDialogues.addDialogue(topic, playerLine, banditLine, earnBoreMin, earnBoreMax, earnRelationMin, earnRelationMax, jokeResponse)
     -- Se a categoria não existir, cria
     if not BanditDialogues.dialogues[topic] then
@@ -34,13 +35,20 @@ function BanditDialogues.addDialogue(topic, playerLine, banditLine, earnBoreMin,
     })
 end
 
+------------------------------------------------
+--- Add Dialog Categories
+------------------------------------------------
+--- Create dialog category
+--- @param insideCategory string - example: "friendly-one"
+--- @param uniqueId string - example: "friedly"
+--- @param name string - Topic name
+--- @param minRelation int - Min Relationship to see this topic
+
 function BanditDialogues.addCategory(insideCategory, uniqueId, name, minRelation)
-    -- Se a categoria não existir, cria a lista vazia
     if not BanditDialogues.categories[uniqueId] then
         BanditDialogues.categories[uniqueId] = {}
     end
 
-    -- Adiciona a nova categoria dentro da lista correspondente ao uniqueId
     table.insert(BanditDialogues.categories[uniqueId], {
         unique_id = uniqueId,
         inside_category = insideCategory,
@@ -48,6 +56,15 @@ function BanditDialogues.addCategory(insideCategory, uniqueId, name, minRelation
         min_relation = minRelation
     })
 end
+
+------------------------------------------------
+--- Add Dialog Speak Option (Topic)
+------------------------------------------------
+--- Create dialog speak option (Topic)
+--- @param insideCategory string - example: "friendly"
+--- @param uniqueId string - example: "friedly-one"
+--- @param name string - Topic name
+--- @param minRelation int - Min Relationship to see this topic
 
 function BanditDialogues.addDialogOption(insideCategory, uniqueId, name, minRelation)
     if not BanditDialogues.dialogOptions[uniqueId] then
@@ -64,9 +81,8 @@ function BanditDialogues.addDialogOption(insideCategory, uniqueId, name, minRela
 end
 
 ------------------------------------------------
--- 2) Funções de escolha do diálogo
+--- Select random speak
 ------------------------------------------------
---- Pega um par de fala aleatório de uma categoria
 function BanditDialogues.getRandomDialogue(topic)
     local list = BanditDialogues.dialogues[topic]
     if not list or #list == 0 then 
@@ -78,12 +94,15 @@ function BanditDialogues.getRandomDialogue(topic)
 end
 
 ------------------------------------------------
--- 3) Executar o diálogo
+--- Execute dialog
 ------------------------------------------------
 function BanditDialogues.generateRandomInteger(min, max)
     return min + ZombRand((max - min) + 1)
 end
 
+------------------------------------------------
+--- Delayed Action
+------------------------------------------------
 function DelayAction(seconds, callback)
     local timer = 0
     local function onTick()
@@ -96,6 +115,9 @@ function DelayAction(seconds, callback)
     Events.OnTick.Add(onTick) -- Adiciona o evento que executará a cada frame
 end
 
+------------------------------------------------
+--- Execute random dialogue
+------------------------------------------------
 function BanditDialogues.doRandomDialogue(player, zombie, topic)
     local brain = BanditBrain.Get(zombie)
     if not brain or (brain.program.name ~= "Companion" and brain.program.name ~= "CompanionGuard") then
@@ -131,7 +153,7 @@ function BanditDialogues.doRandomDialogue(player, zombie, topic)
 end
 
 ------------------------------------------------
--- 4) Menu de contexto
+--- Load Submenus for categories
 ------------------------------------------------
 function BanditDialogues.loadSubMenusForCategory(player, context, category_uniqueId, zombie)
     local addedCategories = {}
@@ -163,6 +185,9 @@ function BanditDialogues.loadSubMenusForCategory(player, context, category_uniqu
     end
 end
 
+------------------------------------------------
+--- Load dialog options for category
+------------------------------------------------
 function BanditDialogues.loadDialogOptionsForCategory(player, context, category_uniqueId, zombie)
     local addedDialogOptions = {}
 
@@ -180,6 +205,9 @@ function BanditDialogues.loadDialogOptionsForCategory(player, context, category_
     end
 end
 
+------------------------------------------------
+--- Mount Dialogue menu in Context Menu
+------------------------------------------------
 function BanditDialogues.addDialogueMenu(playerID, context, worldobjects, test)
     local world = getWorld()
     local gamemode = world:getGameMode()
@@ -201,44 +229,26 @@ function BanditDialogues.addDialogueMenu(playerID, context, worldobjects, test)
         end
     end
 
-    -- Tenta encontrar um "zombie" com a variável Bandit
     local brain = BanditBrain.Get(zombie)
     if not brain or (brain.program.name ~= "Companion" and brain.program.name ~= "CompanionGuard") then
         return
     end
 
-    -- Cria uma opção "Falar com ..."
     local option = context:addOption("Falar com " .. brain.fullname)
     local subMenu = context:getNew(context)
     context:addSubMenu(option, subMenu)
 
-    local friendlyOption = nil -- subMenu:addOption("Ser amigavel")
-    local friendlyContext = nil -- subMenu:getNew(subMenu)
-    -- subMenu:addSubMenu(friendlyOption, friendlyContext)
+    local friendlyOption = nil
+    local friendlyContext = nil
 
     BanditDialogues.loadSubMenusForCategory(player, subMenu, "none", zombie)
-
-    -- Opção de conversa aleatória
-    -- friendlyContext:addOption("Bater papo", player, function() 
-    --     BanditDialogues.doRandomDialogue(player, zombie)
-    -- end)
-
-    -- -- Exemplo de outras opções usando BanditDialogues
-    -- friendlyContext:addOption("Elogiar", player, function()
-    --     BanditDialogues.doRandomDialogue(player, zombie)
-    -- end)
-
-    -- subMenu:addOption("Insultar (Rel-6)", player, function()
-    --     BanditDialogues.doRandomDialogue(player, zombie, "hostile_speak")
-    -- end)
 end
 
 Events.OnPreFillWorldObjectContextMenu.Add(BanditDialogues.addDialogueMenu)
 
 ------------------------------------------------
--- 5) Exemplos de diálogos iniciais
+--- Create Categories and Dialogs
 ------------------------------------------------
--- Você pode registrar diálogos iniciais chamando addDialogue em tempo de carga:
 function BanditDialogues.loadDialogues()
     for k in pairs(BanditDialogues.categories) do
         BanditDialogues.categories[k] = nil

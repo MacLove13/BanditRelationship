@@ -15,7 +15,6 @@ function BanditRelationships.getRelationship(player, bandit)
 
     local id = bandit.id
 
-    -- Se ainda não existir, inicializa a relação
     if not data[id] then
         data[id] = { 
             knows = false,
@@ -31,7 +30,7 @@ end
 function BanditRelationships.modifyRelationship(player, bandit, amount)
     local playa = getSpecificPlayer(0)
     if not playa then
-        print("ERRO: Nenhum player encontrado.")
+        print("ERROR: Player not founded.")
         return
     end
 
@@ -41,9 +40,8 @@ function BanditRelationships.modifyRelationship(player, bandit, amount)
     end
     local data = worldData.BanditRelationships
 
-    local id = bandit.id  -- ou tostring(bandit.id)
+    local id = bandit.id 
     
-    -- Se ainda não existir, inicializa
     if not data[id] then
         data[id] = {
             knows = false,
@@ -53,11 +51,9 @@ function BanditRelationships.modifyRelationship(player, bandit, amount)
         }
     end
 
-    -- Modifica o relacionamento
     local rel = data[id].relation
     rel = rel + amount
 
-    -- Limita entre -100 e 100
     if rel > 100 then 
         rel = 100 
     elseif rel < -100 then 
@@ -65,14 +61,12 @@ function BanditRelationships.modifyRelationship(player, bandit, amount)
     end
 
     data[id].relation = rel
-
-    print("Relação com " .. bandit.fullname .. ": " .. rel)
 end
 
 function BanditRelationships.knowBandit(player, bandit)
     local playa = getSpecificPlayer(0)
     if not playa then
-        print("ERRO: Nenhum player encontrado.")
+        print("ERROR: Player not founded.")
         return
     end
 
@@ -82,9 +76,8 @@ function BanditRelationships.knowBandit(player, bandit)
     end
 
     local data = worldData.BanditRelationships
-    local id = bandit.id  -- ou tostring(bandit.id)
+    local id = bandit.id
     
-    -- Se ainda não existir, inicializa
     if not data[id] then
         data[id] = {
             knows = true,
@@ -101,7 +94,7 @@ end
 function BanditRelationships.removeBandit(bandit)
     local playa = getSpecificPlayer(0)
     if not playa then
-        print("ERRO: Nenhum player encontrado.")
+        print("ERROR: Player not founded.")
         return
     end
     
@@ -111,14 +104,13 @@ function BanditRelationships.removeBandit(bandit)
     end
 
     local data = worldData.BanditRelationships
-    local id = bandit.id  -- ou tostring(bandit.id), se você usa string
+    local id = bandit.id
 
-    -- Se o ID existir na tabela, removemos (nil).
     if data[id] then
         data[id] = nil
-        print("Bandido '" .. bandit.fullname .. "' foi removido de BanditRelationships.")
+        print("Bandit '" .. bandit.fullname .. "' removed at BanditRelationships.")
     else
-        print("Bandido não encontrado na tabela (ID: "..tostring(id)..").")
+        print("Bandido not founded in table (ID: "..tostring(id)..").")
     end
 end
 
