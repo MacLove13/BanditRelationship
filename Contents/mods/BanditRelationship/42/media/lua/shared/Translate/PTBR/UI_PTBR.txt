@@ -1,0 +1,5 @@
+UI_PTBR = {
+	UI_BanditDeialogue_OptionsMenu_title = "Dialogos com Bandidos",
+	UI_BanditDeialogue_OptionsMenu_keybing = "Ver lista de relacionamentos",
+	UI_BanditDeialogue_OptionsMenu_RelationshipMenutitle = "Lista de Relacionamentos"
+}

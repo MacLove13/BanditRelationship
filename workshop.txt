@@ -1,0 +1,8 @@
+version=1
+id=3430459231
+title=Bandit Relationship (Development)
+description=How about adding a little more life to your Bandit Mod?
+description=
+description=With this mod you will have relationships with companions, being able to become friends, be neutral and even have some enmity.
+tags=Build 42;Misc
+visibility=private

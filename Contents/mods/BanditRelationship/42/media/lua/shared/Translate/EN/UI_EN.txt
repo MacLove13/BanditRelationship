@@ -1,0 +1,4 @@
+UI_EN = {
+	UI_BanditDeialogue_OptionsMenu_title = "Bandits Dialog Config",
+	UI_BanditDeialogue_OptionsMenu_keybing = "Show relationships menu"
+}
