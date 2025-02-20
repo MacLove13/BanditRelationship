@@ -124,8 +124,16 @@ function BanditDialogues.doRandomDialogue(player, zombie, topic)
         return
     end
 
+    local relationship = BanditRelationships.getRelationship(player, brain)
+
     topic = topic or "none"
+
+    if topic == "friendly-about-day" then
+        topic = relationship.dayMood
+    end
+
     local dlg = BanditDialogues.getRandomDialogue(topic)
+
 
     if not dlg then
         player:Say("Nao ha falas para o topico '" .. topic .. "' ainda.")
@@ -165,11 +173,11 @@ function BanditDialogues.loadSubMenusForCategory(player, context, category_uniqu
         return
     end
 
-    local knows, relation = BanditRelationships.getRelationship(player, brain)
+    local relationship = BanditRelationships.getRelationship(player, brain)
 
     for uniqueId, categoryList in pairs(BanditDialogues.categories) do
         for _, category in ipairs(categoryList) do
-            if relation >= category.min_relation then
+            if relationship.relation >= category.min_relation then
                 if category.inside_category == category_uniqueId and not addedCategories[category.unique_id] then
                     friendlyOption = context:addOption(category.name)
                     friendlyContext = context:getNew(context)
@@ -308,21 +316,49 @@ function BanditDialogues.loadDialogues()
 
     BanditDialogues.addDialogOption("know", "know-two", "Perguntar sobre a familia", 0)
     BanditDialogues.addDialogue("know-two", "O que aconteceu com sua familia?", "Meu filho Peter deve estar por ai, mas os outros... bem, voce sabe.", 2, 5, 1, 5)
+    
 
     -- ===================================================================================
     -- Friendly
     BanditDialogues.addCategory("none", "friendly", getText("IGUI_BanditDialog_Category_Friendly"), 0)
 
     -- Submenu 1
-    BanditDialogues.addDialogOption("friendly", "friendly-one", "Como vai o seu dia?", 0)
-    BanditDialogues.addDialogue("friendly-one", "Como vai seu dia?", "Esta tudo bem.", 2, 5, 1, 5)
-    BanditDialogues.addDialogue("friendly-one", "Como vai seu dia?", "Uma merda.", -1, -5, -5, -10)
-    BanditDialogues.addDialogue("friendly-one", "Como vai seu dia?", "Ja tive dias melhores.", 0, 1, 0, 2)
-    BanditDialogues.addDialogue("friendly-one", "Como vai seu dia?", "Estamos no apocalipse, nao podia ser melhor.", 0, -5, -5, -10)
-
+    BanditDialogues.addDialogOption("friendly", "friendly-about-day", "Como vai o seu dia?", 0)
+    -- Responses in Dialogs/DialogsAboutDay
+    DialogsAboutDay.loadDialogues()
+    
     -- Submenu 2
     BanditDialogues.addDialogOption("friendly", "friendly-two", "Como voce esta?", 0)
-
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou bem, obrigado por perguntar.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Já estive melhor, mas estou sobrevivendo.", 1, 4, 0, 3)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Não muito bem, mas vou ficar bem.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou cansado, mas ainda de pé.", 1, 3, 0, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco desanimado.", -1, 2, -2, 1)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou ótimo, obrigado por perguntar.", 3, 6, 2, 5)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco solitário.", 0, 2, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou com fome, mas estou bem.", 1, 4, 0, 3)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou com medo, mas vou continuar lutando.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo esperançoso hoje.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou um pouco preocupado com o futuro.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco perdido.", -1, 2, -2, 1)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou bem, apenas cansado.", 1, 4, 0, 3)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco ansioso.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco triste.", -1, 2, -2, 1)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco confuso.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco frustrado.", -1, 2, -2, 1)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco esperançoso.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco otimista.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco pessimista.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco nervoso.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco calmo.", 1, 4, 0, 3)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco relaxado.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco tenso.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco aliviado.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco preocupado.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco animado.", 2, 5, 1, 4)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco entediado.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco exausto.", 0, 3, -1, 2)
+    BanditDialogues.addDialogue("friendly-two", "Como você está?", "Estou me sentindo um pouco revigorado.", 2, 5, 1, 4)
 
     -- ===================================================================================
     -- Jokes
@@ -331,6 +367,41 @@ function BanditDialogues.loadDialogues()
     -- Submenu 1
     BanditDialogues.addDialogOption("jokes", "jokes-one", "Me conte uma piada", 0)
     BanditDialogues.addDialogue("jokes-one", "Me conte uma piada.", "O que e um ponto azul voando?", 2, 5, 1, 5, "Uma bluebluereta")
+    BanditDialogues.addDialogue("jokes-one", "Me conte outra piada.", "Por que o livro de matemática se suicidou?", 2, 5, 1, 5, "Porque ele tinha muitos problemas.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de médico.", "O que o tomate foi fazer no hospital?", 2, 5, 1, 5, "Ele foi se tratar.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de escola.", "Por que o livro de história estava sempre deprimido?", 2, 5, 1, 5, "Porque ele tinha muitos capítulos tristes.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de frutas.", "O que a banana falou para o tomate?", 2, 5, 1, 5, "Eu quebro você no meio.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de animais.", "Por que o cachorro não gosta de assistir TV?", 2, 5, 1, 5, "Porque ele já viu tudo em preto e branco.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de comida.", "Por que o pão não entende as piadas?", 2, 5, 1, 5, "Porque ele é meio duro.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de esportes.", "Por que o jogador de futebol foi ao banco?", 2, 5, 1, 5, "Para tirar o extrato.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de tecnologia.", "Por que o computador foi ao médico?", 2, 5, 1, 5, "Porque ele estava com um vírus.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de música.", "Por que o músico foi preso?", 2, 5, 1, 5, "Porque ele tocou uma nota falsa.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de matemática.", "Por que o número 6 tem medo do número 7?", 2, 5, 1, 5, "Porque 7 8 9.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de ciências.", "Por que o átomo foi preso?", 2, 5, 1, 5, "Porque ele quebrou a lei.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de geografia.", "Por que o mapa foi ao terapeuta?", 2, 5, 1, 5, "Porque ele estava perdido.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de história.", "Por que o faraó não gostava de piadas?", 2, 5, 1, 5, "Porque ele estava sempre em negação.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de química.", "Por que o hidrogênio e o oxigênio foram ao bar?", 2, 5, 1, 5, "Para fazer H2O.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de física.", "Por que o elétron não pode ser convidado para festas?", 2, 5, 1, 5, "Porque ele é muito negativo.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de astronomia.", "Por que o astronauta quebrou com a namorada?", 2, 5, 1, 5, "Porque ele precisava de espaço.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de biologia.", "Por que a célula foi ao psicólogo?", 2, 5, 1, 5, "Porque ela estava dividida.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de literatura.", "Por que o escritor foi ao hospital?", 2, 5, 1, 5, "Porque ele estava com um bloqueio.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de arte.", "Por que o pintor foi preso?", 2, 5, 1, 5, "Porque ele foi pego em flagrante.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de teatro.", "Por que o ator foi ao banco?", 2, 5, 1, 5, "Para fazer uma cena.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de dança.", "Por que o dançarino foi ao médico?", 2, 5, 1, 5, "Porque ele estava com um passo errado.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de fotografia.", "Por que o fotógrafo foi ao banco?", 2, 5, 1, 5, "Para tirar uma foto.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de cinema.", "Por que o diretor foi ao hospital?", 2, 5, 1, 5, "Porque ele estava com um corte.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de televisão.", "Por que o apresentador foi ao banco?", 2, 5, 1, 5, "Para fazer um programa.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de rádio.", "Por que o locutor foi ao médico?", 2, 5, 1, 5, "Porque ele estava com uma frequência.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de jornal.", "Por que o jornalista foi ao banco?", 2, 5, 1, 5, "Para fazer uma matéria.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de revista.", "Por que o editor foi ao médico?", 2, 5, 1, 5, "Porque ele estava com uma edição.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de internet.", "Por que o blogueiro foi ao banco?", 2, 5, 1, 5, "Para fazer um post.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de redes sociais.", "Por que o influenciador foi ao médico?", 2, 5, 1, 5, "Porque ele estava com uma tendência.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de marketing.", "Por que o publicitário foi ao banco?", 2, 5, 1, 5, "Para fazer uma campanha.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de vendas.", "Por que o vendedor foi ao médico?", 2, 5, 1, 5, "Porque ele estava com uma oferta.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada engraçada.", "O que o pato disse para a pata?", 2, 5, 1, 5, "Vem quá!")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada curta.", "Por que a galinha atravessou a rua?", 2, 5, 1, 5, "Para chegar do outro lado.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada boba.", "O que é um pontinho amarelo na estrada?", 2, 5, 1, 5, "Um fandangos.")
+    BanditDialogues.addDialogue("jokes-one", "Me conte uma piada de animais.", "Por que o elefante não usa computador?", 2, 5, 1, 5, "Porque ele tem medo do mouse.")
 
     -- Submenu 2
     BanditDialogues.addDialogOption("jokes", "jokes-two", "Contar uma piada", 0)
@@ -341,6 +412,46 @@ function BanditDialogues.loadDialogues()
 
     -- Submenu 1
     BanditDialogues.addDialogOption("survive", "survive-one", "Tem alguma dica?", 0)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um plano de fuga.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Nunca confie em estranhos.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha seus suprimentos organizados.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite fazer barulho desnecessário.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha uma arma reserva.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a cozinhar com ingredientes simples.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se em forma, você pode precisar correr.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Conheça bem a área ao redor do seu abrigo.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um kit de primeiros socorros.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Economize munição, use armas brancas quando possível.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um esconderijo seguro.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite áreas densamente povoadas.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se hidratado, a água é essencial.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a fazer fogo sem fósforos.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um mapa da região.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite confrontos desnecessários.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se calmo em situações de perigo.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a identificar plantas comestíveis.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha uma fonte de luz.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite viajar sozinho.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha suas ferramentas afiadas.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a construir abrigos improvisados.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um plano B.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite consumir alimentos estragados.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se aquecido em climas frios.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a pescar e caçar.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um sinalizador de emergência.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite beber água não tratada.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se informado sobre o clima.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a costurar e reparar roupas.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um apito para sinalização.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite áreas com muitos zumbis.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se em silêncio para evitar atenção.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a fazer armadilhas.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um rádio para comunicação.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite locais abertos durante tempestades.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Mantenha-se alerta a qualquer movimento.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Aprenda a nadar.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Sempre tenha um canivete multifuncional.", 2, 5, 1, 5)
+    BanditDialogues.addDialogue("survive-one", "Tem alguma dica de sobrevivência?", "Evite consumir água salgada.", 2, 5, 1, 5)    
 end
 
 BanditDialogues.loadDialogues()
