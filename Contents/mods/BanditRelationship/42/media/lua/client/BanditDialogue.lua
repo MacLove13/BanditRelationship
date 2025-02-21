@@ -264,7 +264,7 @@ function BanditDialogues.addDialogueMenu(playerID, context, worldobjects, test)
         return
     end
 
-    local option = context:addOption("Falar com " .. brain.fullname)
+    local option = context:addOption(getText("IGUI_BanditDialog_SpeakWith") .. " " .. brain.fullname)
     local subMenu = context:getNew(context)
     context:addSubMenu(option, subMenu)
 
@@ -314,8 +314,6 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_FoundSafePlace"), getText("IGUI_BanditDialog_Answer_NoSafePlace"), 3, 6, -2, 3)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_Skills"), getText("IGUI_BanditDialog_Answer_LearnedShooting"), 2, 5, 1, 5)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_LivedBefore"), getText("IGUI_BanditDialog_Answer_SmallApartment"), 2, 4, 1, 4)
-    BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_Regret"), getText("IGUI_BanditDialog_Answer_CantChangePast"), 3, 6, -2, 2)
-    BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_TimeTravel"), getText("IGUI_BanditDialog_Answer_Bunker"), 2, 4, 2, 5)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_Hope"), getText("IGUI_BanditDialog_Answer_KeepMoving"), 3, 5, -1, 3)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_Cure"), getText("IGUI_BanditDialog_Answer_NeverReachUs"), 2, 4, -1, 2)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_Routine"), getText("IGUI_BanditDialog_Answer_RepeatCycle"), 3, 6, 0, 4)

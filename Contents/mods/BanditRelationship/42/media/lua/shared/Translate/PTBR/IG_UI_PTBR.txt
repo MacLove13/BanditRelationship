@@ -1,4 +1,5 @@
 IG_UI_PTBR = {
+	IGUI_BanditDialog_SpeakWith = "Falar com"
 	IGUI_BanditDialog_Category_Friendly = "Amigavel",
 	IGUI_BanditDialog_Category_KnowNew = "Conhecer"
 	IGUI_BanditDialog_Category_Know = "Conhecer mais"
@@ -291,8 +292,6 @@ IG_UI_PTBR = {
     IGUI_BanditDialog_Answer_AnySurviveHint_38 = "Aprenda a nadar.",
     IGUI_BanditDialog_Answer_AnySurviveHint_39 = "Sempre tenha um canivete multifuncional.",
     IGUI_BanditDialog_Answer_AnySurviveHint_40 = "Evite consumir água salgada.",
-
-
 
 	IGUI_BanditDialog_Category_Jokes = "Piadas",
 	IGUI_BanditDialog_Option_TellJoke = "Me conte uma piada",
