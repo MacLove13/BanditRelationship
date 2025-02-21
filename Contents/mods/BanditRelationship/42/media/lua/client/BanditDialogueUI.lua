@@ -72,28 +72,31 @@ function BanditDialogueUI:createChildren()
     self.mainPanel:noBackground()
     self:addChild(self.mainPanel)
 
-    self.infoButton = ISButton:new(self.width - 70, 2, 40, 14, "Info", self, BanditDialogueUI.onInfo)
-    self.infoButton:initialise()
-    self:addChild(self.infoButton)
+    -- self.infoButton = ISButton:new(self.width - 70, 2, 40, 14, "Info", self, BanditDialogueUI.onInfo)
+    -- self.infoButton:initialise()
+    -- self:addChild(self.infoButton)
 
     function self.mainPanel:render()
         local yOffset = 10
 
-        self:drawText("Relacionamentos:", 10, yOffset, 1, 1, 1, 1, UIFont.Large)
+        self:drawText(getText("UI_BanditDeialogue_OptionsMenu_Relationships"), 10, yOffset, 1, 1, 1, 1, UIFont.Large)
         yOffset = yOffset + 30
 
         local sortedBandits = BanditDialogueUI.getSortedBanditsByDistance()
+
         for _, entry in ipairs(sortedBandits) do
             local id   = entry.id
             local info = entry.info
 
             local zombie = findZombieByID(id)
             if not zombie then
+                BanditRelationships.removeBanditById(id)
                 break
             end
 
             local brain = BanditBrain.Get(zombie)
             if not brain then
+                BanditRelationships.removeBanditById(id)
                 break
             end
 
@@ -123,30 +126,30 @@ function BanditDialogueUI:createChildren()
                 self.parent.buttons[id] = {}
 
                 -- Button 1
-                local btn1 = ISButton:new(barX + barWidth + 60, barY - 5, 40, 20, "Seguir", self.parent, BanditDialogueUI.onBanditButton)
-                btn1.internalData = {banditID=id, action="botao1"}
+                local btn1 = ISButton:new(barX + barWidth + 100, barY - 5, 40, 20, getText("UI_BanditDeialogue_OptionsMenu_RelationshipRemove"), self.parent, BanditDialogueUI.onBanditButton)
+                btn1.internalData = {banditID=id, action="remove"}
                 btn1:initialise()
                 self.parent:addChild(btn1)
                 self.parent.buttons[id][1] = btn1
 
                 -- Button 2
-                local btn2 = ISButton:new(barX + barWidth + 55, barY - 5, 40, 20, "B2", self.parent, BanditDialogueUI.onBanditButton)
-                btn2.internalData = {banditID=id, action="botao2"}
-                btn2:initialise()
-                self.parent:addChild(btn2)
-                self.parent.buttons[id][2] = btn2
+                -- local btn2 = ISButton:new(barX + barWidth + 55, barY - 5, 40, 20, "B2", self.parent, BanditDialogueUI.onBanditButton)
+                -- btn2.internalData = {banditID=id, action="botao2"}
+                -- btn2:initialise()
+                -- self.parent:addChild(btn2)
+                -- self.parent.buttons[id][2] = btn2
 
-                -- Button 3
-                local btn3 = ISButton:new(barX + barWidth + 100, barY - 5, 40, 20, "Go", self.parent, BanditDialogueUI.onBanditButton)
-                btn3.internalData = {banditID=id, action="moveTo"}
-                btn3:initialise()
-                self.parent:addChild(btn3)
-                self.parent.buttons[id][3] = btn3
+                -- -- Button 3
+                -- local btn3 = ISButton:new(barX + barWidth + 100, barY - 5, 40, 20, "Go", self.parent, BanditDialogueUI.onBanditButton)
+                -- btn3.internalData = {banditID=id, action="moveTo"}
+                -- btn3:initialise()
+                -- self.parent:addChild(btn3)
+                -- self.parent.buttons[id][3] = btn3
             else
                 local btns = self.parent.buttons[id]
-                btns[1]:setX(barX + barWidth + 10);   btns[1]:setY(barY + 10)
-                btns[2]:setX(barX + barWidth + 55);   btns[2]:setY(barY + 10)
-                btns[3]:setX(barX + barWidth + 100);  btns[3]:setY(barY + 10)
+                btns[1]:setX(barX + barWidth + 80);   btns[1]:setY(barY + 10)
+                -- btns[2]:setX(barX + barWidth + 55);   btns[2]:setY(barY + 10)
+                -- btns[3]:setX(barX + barWidth + 100);  btns[3]:setY(barY + 10)
             end
 
             yOffset = yOffset + barHeight + 20
@@ -159,11 +162,11 @@ function BanditDialogueUI:createChildren()
     end
 
     -- "Info" Button in bar
-    self.infoButton = ISButton:new(self.width - 70, 2, 40, 14, "Info", self, BanditDialogueUI.onInfo)
-    self.infoButton:initialise()
-    self.infoButton:instantiate()
-    self.infoButton.borderColor = {r=1, g=1, b=1, a=1}
-    self:addChild(self.infoButton)
+    -- self.infoButton = ISButton:new(self.width - 70, 2, 40, 14, "Info", self, BanditDialogueUI.onInfo)
+    -- self.infoButton:initialise()
+    -- self.infoButton:instantiate()
+    -- self.infoButton.borderColor = {r=1, g=1, b=1, a=1}
+    -- self:addChild(self.infoButton)
 end
 
 ----------------------------
@@ -180,18 +183,23 @@ function BanditDialogueUI:onBanditButton(button)
     local data = button.internalData
     if data.action == "moveTo" then
         -- Exemplo: setar para que o próximo clique no mundo defina o destino
-        BanditDialogueUI.selectedBanditForMovement = data.banditID
-        print("Selecione no mapa onde o bandido deve ir. (Exemplo)")
-    else
-        local isoZ = findZombieByID(data.banditID)
-        if isoZ then
-            print("Bandit founded")
-        else
-            print("Bandit not founded")
-        end
+        -- BanditDialogueUI.selectedBanditForMovement = data.banditID
+        -- print("Selecione no mapa onde o bandido deve ir. (Exemplo)")
+    elseif data.action == "remove" then
+        local zombie = findZombieByID(data.banditID)
+        local brain = BanditBrain.Get(zombie)
 
-        -- Outras ações que quiser (B1, B2)  
-        print("Executa ação:", data.action, "para bandido:", data.banditID)
+        BanditRelationships.removeBandit(brain)
+    else
+        -- local isoZ = findZombieByID(data.banditID)
+        -- if isoZ then
+        --     print("Bandit founded")
+        -- else
+        --     print("Bandit not founded")
+        -- end
+
+        -- -- Outras ações que quiser (B1, B2)  
+        -- print("Executa ação:", data.action, "para bandido:", data.banditID)
     end
 end
 
@@ -253,7 +261,7 @@ end
 ----------------------------
 function BanditDialogueUI.show()
     if not OpennedRelationshipMenu then
-        local ui = BanditDialogueUI:new(100, 100, 300, 400, "Relationships")
+        local ui = BanditDialogueUI:new(100, 100, 300, 400, getText("UI_BanditDeialogue_OptionsMenu_RelationshipsTitle"))
         ui:initialise()
         ui:addToUIManager()
 
