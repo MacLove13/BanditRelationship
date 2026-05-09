@@ -69,7 +69,7 @@ function BanditDialogueUI:createChildren()
     self.mainPanel = ISPanel:new(0, 16, self.width, self.height - 16)
     self.mainPanel:initialise()
     self.mainPanel:instantiate()
-    self.mainPanel:noBackground()
+    self.mainPanel.noBackground = true
     self:addChild(self.mainPanel)
 
     -- self.infoButton = ISButton:new(self.width - 70, 2, 40, 14, "Info", self, BanditDialogueUI.onInfo)
