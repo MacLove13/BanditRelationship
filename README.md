@@ -6,7 +6,7 @@
 
 ## 📖 About
 
-**Bandit Relationship** is a mod for **Project Zomboid (Build 42)** that extends the [Bandits mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2392676460) by adding a relationship and dialogue system to your NPC companions.
+**Bandit Relationship** is a mod for **Project Zomboid (Build 42)** that extends the [Bandits mod](https://steamcommunity.com/workshop/filedetails/?id=3268487204) by adding a relationship and dialogue system to your NPC companions.
 
 Each companion (bandit) now has:
 - A **pre-apocalypse profession** (randomly assigned — could be a Lawyer, Doctor, Engineer, Farmer, and many more)
@@ -32,7 +32,7 @@ Each companion (bandit) now has:
 | Dependency | Link |
 |---|---|
 | Project Zomboid **Build 42** | [Steam](https://store.steampowered.com/app/108600/Project_Zomboid/) |
-| **Bandits** mod | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2392676460) |
+| **Bandits** mod | [Steam Workshop](https://steamcommunity.com/workshop/filedetails/?id=3268487204) |
 
 ---
 
