@@ -371,12 +371,38 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("friendly-two", getText("IGUI_BanditDialog_Question_HowAreYou"), getText("IGUI_BanditDialog_Answer_Tense"), 0, 3, -1, 2)
     BanditDialogues.addDialogue("friendly-two", getText("IGUI_BanditDialog_Question_HowAreYou"), getText("IGUI_BanditDialog_Answer_Relieved"), 2, 5, 1, 4)
 
+    -- Submenu 3: Small Talk
+    BanditDialogues.addDialogOption("friendly", "friendly-smalltalk", getText("IGUI_BanditDialog_Option_SmallTalk"), 0)
+    BanditDialogues.addDialogue("friendly-smalltalk", getText("IGUI_BanditDialog_Question_NiceToSeeYou"), getText("IGUI_BanditDialog_Answer_NiceToSeeYou"), 2, 4, 1, 3)
+    BanditDialogues.addDialogue("friendly-smalltalk", getText("IGUI_BanditDialog_Question_YouLookWell"), getText("IGUI_BanditDialog_Answer_YouLookWell"), 2, 4, 1, 3)
+    BanditDialogues.addDialogue("friendly-smalltalk", getText("IGUI_BanditDialog_Question_HowIsLife"), getText("IGUI_BanditDialog_Answer_CouldBeWorse"), 1, 3, 0, 2)
+    BanditDialogues.addDialogue("friendly-smalltalk", getText("IGUI_BanditDialog_Question_AnythingInteresting"), getText("IGUI_BanditDialog_Answer_SameOldApocalypse"), 1, 3, 0, 2)
+    BanditDialogues.addDialogue("friendly-smalltalk", getText("IGUI_BanditDialog_Question_GladYoureAround"), getText("IGUI_BanditDialog_Answer_MeToo"), 3, 5, 2, 5)
+
+    -- Submenu 4: Weather
+    BanditDialogues.addDialogOption("friendly", "friendly-weather", getText("IGUI_BanditDialog_Option_Weather"), 0)
+    BanditDialogues.addDialogue("friendly-weather", getText("IGUI_BanditDialog_Question_NiceWeather"), getText("IGUI_BanditDialog_Answer_AlmostForget"), 1, 3, 0, 2)
+    BanditDialogues.addDialogue("friendly-weather", getText("IGUI_BanditDialog_Question_BrutalHeat"), getText("IGUI_BanditDialog_Answer_MakesEverythingHarder"), 1, 3, 0, 2)
+    BanditDialogues.addDialogue("friendly-weather", getText("IGUI_BanditDialog_Question_RainNotStopping"), getText("IGUI_BanditDialog_Answer_ZombiesSlowInRain"), 1, 3, 1, 3)
+    BanditDialogues.addDialogue("friendly-weather", getText("IGUI_BanditDialog_Question_ChillyToday"), getText("IGUI_BanditDialog_Answer_ColdKeepsSlower"), 1, 3, 1, 3)
+    BanditDialogues.addDialogue("friendly-weather", getText("IGUI_BanditDialog_Question_FoggyMorning"), getText("IGUI_BanditDialog_Answer_StaySharpFog"), 1, 3, 0, 2)
+
+    -- Submenu 5: Hear a story (requires relation >= 5)
+    BanditDialogues.addDialogOption("friendly", "friendly-story", getText("IGUI_BanditDialog_Option_HearStory"), 5)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_RoadTrip"), 5, 8, 2, 5)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_Dog"), 5, 8, 2, 6)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_Chickens"), 4, 7, 1, 4)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_Lost"), 4, 7, 2, 5)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_NightShift"), 4, 7, 1, 4)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_Concert"), 5, 8, 2, 5)
+    BanditDialogues.addDialogue("friendly-story", getText("IGUI_BanditDialog_Question_TellMeStory"), getText("IGUI_BanditDialog_Answer_Story_Neighbor"), 4, 7, 1, 4)
+
 
     -- ===================================================================================
     -- Jokes
     BanditDialogues.addCategory("none", "jokes", getText("IGUI_BanditDialog_Category_Jokes"), 20)
 
-    -- Submenu 1
+    -- Submenu 1: Hear a joke (bandit tells)
     BanditDialogues.addDialogOption("jokes", "jokes-one", getText("IGUI_BanditDialog_Option_TellJoke"), 0)
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellJoke"), getText("IGUI_BanditDialog_Answer_BlueDot"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_Bluebluereta"))
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellAnotherJoke"), getText("IGUI_BanditDialog_Answer_MathBook"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_MathProblems"))
@@ -388,6 +414,14 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellZombieJoke"), getText("IGUI_BanditDialog_Answer_ZombieChef"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_DeadbeatChef"))
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellAtomJoke"), getText("IGUI_BanditDialog_Answer_AtomsLie"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_AtomsLie"))
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellDentistJoke"), getText("IGUI_BanditDialog_Answer_UsedToHateDentist"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_NoDentistNow"))
+
+    -- Submenu 2: Player tells a joke (bandit reacts)
+    BanditDialogues.addDialogOption("jokes", "jokes-player-tells", getText("IGUI_BanditDialog_Option_PlayerTellsJoke"), 0)
+    BanditDialogues.addDialogue("jokes-player-tells", getText("IGUI_BanditDialog_Question_WantToHearJoke"), getText("IGUI_BanditDialog_Answer_JokeLaugh"), 3, 6, 2, 5)
+    BanditDialogues.addDialogue("jokes-player-tells", getText("IGUI_BanditDialog_Question_WantToHearJoke"), getText("IGUI_BanditDialog_Answer_JokeNeutral"), 1, 3, -1, 1)
+    BanditDialogues.addDialogue("jokes-player-tells", getText("IGUI_BanditDialog_Question_WantToHearJoke"), getText("IGUI_BanditDialog_Answer_JokeSurprised"), 3, 6, 2, 5)
+    BanditDialogues.addDialogue("jokes-player-tells", getText("IGUI_BanditDialog_Question_WantToHearJoke"), getText("IGUI_BanditDialog_Answer_JokeNeededThat"), 3, 6, 2, 5)
+    BanditDialogues.addDialogue("jokes-player-tells", getText("IGUI_BanditDialog_Question_WantToHearJoke"), getText("IGUI_BanditDialog_Answer_JokeBad"), 2, 4, -2, 0)
 
 
     -- ===================================================================================

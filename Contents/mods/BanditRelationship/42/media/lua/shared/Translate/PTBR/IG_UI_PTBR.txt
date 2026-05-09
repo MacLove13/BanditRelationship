@@ -382,4 +382,50 @@ IG_UI_PTBR = {
 	IGUI_BanditDialog_Question_EverFeelHopeless = "Você já se sente sem esperança?",
 	IGUI_BanditDialog_Answer_KeepGoingAnyway = "Às vezes. Mas continuo de qualquer jeito... é hábito, acho.",
 
+	-- Bate-papo casual
+	IGUI_BanditDialog_Option_SmallTalk = "Conversar à toa",
+	IGUI_BanditDialog_Question_NiceToSeeYou = "Que bom te encontrar por aqui.",
+	IGUI_BanditDialog_Answer_NiceToSeeYou = "Igualmente... é sempre bom ver uma cara conhecida.",
+	IGUI_BanditDialog_Question_YouLookWell = "Você está bem hoje.",
+	IGUI_BanditDialog_Answer_YouLookWell = "Obrigado. Me sinto melhor do que ontem, pelo menos.",
+	IGUI_BanditDialog_Question_HowIsLife = "Como a vida está te tratando?",
+	IGUI_BanditDialog_Answer_CouldBeWorse = "Poderia ser pior. Poderia ser melhor. Mas estou aqui.",
+	IGUI_BanditDialog_Question_AnythingInteresting = "Aconteceu algo interessante hoje?",
+	IGUI_BanditDialog_Answer_SameOldApocalypse = "Não. Mesmo fim do mundo de sempre.",
+	IGUI_BanditDialog_Question_GladYoureAround = "Fico feliz que você esteja por aqui.",
+	IGUI_BanditDialog_Answer_MeToo = "...É. Eu também.",
+
+	-- Clima
+	IGUI_BanditDialog_Option_Weather = "Comentar sobre o clima",
+	IGUI_BanditDialog_Question_NiceWeather = "O tempo está ótimo hoje, não é?",
+	IGUI_BanditDialog_Answer_AlmostForget = "É... quase dá pra esquecer que o mundo acabou.",
+	IGUI_BanditDialog_Question_BrutalHeat = "Esse calor está insuportável.",
+	IGUI_BanditDialog_Answer_MakesEverythingHarder = "Pode falar. Tudo fica mais difícil assim.",
+	IGUI_BanditDialog_Question_RainNotStopping = "Essa chuva não para.",
+	IGUI_BanditDialog_Answer_ZombiesSlowInRain = "Eu meio que gosto. Os zumbis ficam mais lentos na chuva.",
+	IGUI_BanditDialog_Question_ChillyToday = "Que friozinho hoje.",
+	IGUI_BanditDialog_Answer_ColdKeepsSlower = "O frio os deixa mais lentos. Prefiro assim.",
+	IGUI_BanditDialog_Question_FoggyMorning = "Manhã de neblina.",
+	IGUI_BanditDialog_Answer_StaySharpFog = "Neblina significa que você não consegue ver eles chegando. Fique alerta.",
+
+	-- Histórias
+	IGUI_BanditDialog_Option_HearStory = "Me conta uma história",
+	IGUI_BanditDialog_Question_TellMeStory = "Me conta uma história.",
+	IGUI_BanditDialog_Answer_Story_RoadTrip = "Antes de tudo isso, meu carro quebrou no meio do nada durante uma viagem. Passei dois dias consertando com abraçadeiras e muita fé.",
+	IGUI_BanditDialog_Answer_Story_Dog = "Eu tinha um cachorro chamado Rex. O bicho mais durão que você já viu. Ele me salvou uma vez... espero que ainda esteja por aí.",
+	IGUI_BanditDialog_Answer_Story_Chickens = "Meu vizinho criava galinhas antes de tudo isso. A gente achava que ele era doido. Hoje daria tudo por um ovo fresco.",
+	IGUI_BanditDialog_Answer_Story_Lost = "Me perdi numa trilha uma vez. Três dias sozinho no mato. Pensei que tinha acabado. Engraçado como parece aquecimento agora.",
+	IGUI_BanditDialog_Answer_Story_NightShift = "Uma vez me tranquei dentro do trabalho durante um plantão noturno. Fiquei seis horas tentando sair. Boa preparação pro que viria depois.",
+	IGUI_BanditDialog_Answer_Story_Concert = "Estava num show quando a notícia do surto chegou no celular de todo mundo. As pessoas continuaram dançando. Ninguém acreditou ainda. Sinto falta dessa ignorância.",
+	IGUI_BanditDialog_Answer_Story_Neighbor = "Tinha uma senhora velha na minha rua que ficava olhando todo mundo da varanda. Acabou que ela era quem sabia de tudo. Provavelmente sabia que isso ia acontecer antes de todo mundo.",
+
+	-- Jogador conta uma piada
+	IGUI_BanditDialog_Option_PlayerTellsJoke = "Contar uma piada",
+	IGUI_BanditDialog_Question_WantToHearJoke = "Quer ouvir uma piada?",
+	IGUI_BanditDialog_Answer_JokeLaugh = "Hah! É bem boa, vou admitir.",
+	IGUI_BanditDialog_Answer_JokeNeutral = "...Já ouvi melhor. Mas tá bom.",
+	IGUI_BanditDialog_Answer_JokeSurprised = "Hah! Você é mais engraçado do que parece.",
+	IGUI_BanditDialog_Answer_JokeNeededThat = "Precisava dessa risada. Valeu.",
+	IGUI_BanditDialog_Answer_JokeBad = "...Era isso? Continua praticando.",
+
 }

@@ -382,4 +382,50 @@ IG_UI_EN = {
     IGUI_BanditDialog_Question_EverFeelHopeless = "Do you ever feel hopeless?",
     IGUI_BanditDialog_Answer_KeepGoingAnyway = "Sometimes. But I keep going anyway... habit, I guess.",
 
+    -- Small Talk
+    IGUI_BanditDialog_Option_SmallTalk = "Chat casually",
+    IGUI_BanditDialog_Question_NiceToSeeYou = "Nice to run into you.",
+    IGUI_BanditDialog_Answer_NiceToSeeYou = "Likewise... always good to see a familiar face.",
+    IGUI_BanditDialog_Question_YouLookWell = "You're looking well today.",
+    IGUI_BanditDialog_Answer_YouLookWell = "Thanks. I feel better than yesterday, at least.",
+    IGUI_BanditDialog_Question_HowIsLife = "How's life treating you?",
+    IGUI_BanditDialog_Answer_CouldBeWorse = "Could be worse. Could be better. But I'm here.",
+    IGUI_BanditDialog_Question_AnythingInteresting = "Anything interesting happen today?",
+    IGUI_BanditDialog_Answer_SameOldApocalypse = "Nah. Same old end of the world.",
+    IGUI_BanditDialog_Question_GladYoureAround = "I'm glad you're around.",
+    IGUI_BanditDialog_Answer_MeToo = "...Yeah. Me too.",
+
+    -- Weather
+    IGUI_BanditDialog_Option_Weather = "Comment on the weather",
+    IGUI_BanditDialog_Question_NiceWeather = "Nice weather today, isn't it?",
+    IGUI_BanditDialog_Answer_AlmostForget = "Yeah... almost makes you forget the world ended.",
+    IGUI_BanditDialog_Question_BrutalHeat = "This heat is brutal.",
+    IGUI_BanditDialog_Answer_MakesEverythingHarder = "Tell me about it. Makes everything harder.",
+    IGUI_BanditDialog_Question_RainNotStopping = "This rain isn't letting up.",
+    IGUI_BanditDialog_Answer_ZombiesSlowInRain = "I kind of like it. Zombies slow down in the rain.",
+    IGUI_BanditDialog_Question_ChillyToday = "Chilly today.",
+    IGUI_BanditDialog_Answer_ColdKeepsSlower = "Cold keeps them slower. I'll take it.",
+    IGUI_BanditDialog_Question_FoggyMorning = "Foggy morning.",
+    IGUI_BanditDialog_Answer_StaySharpFog = "Fog means you can't see them coming. Stay sharp.",
+
+    -- Stories
+    IGUI_BanditDialog_Option_HearStory = "Tell me a story",
+    IGUI_BanditDialog_Question_TellMeStory = "Tell me a story.",
+    IGUI_BanditDialog_Answer_Story_RoadTrip = "Before all this, my car broke down in the middle of nowhere on a road trip. Spent two days fixing it with zip ties and prayers.",
+    IGUI_BanditDialog_Answer_Story_Dog = "I had a dog named Rex. Toughest little mutt you ever saw. He saved my life once... I hope he's still out there somewhere.",
+    IGUI_BanditDialog_Answer_Story_Chickens = "My neighbor kept chickens before all this. We all thought he was crazy. Now I'd do anything for a fresh egg.",
+    IGUI_BanditDialog_Answer_Story_Lost = "I got lost hiking once. Three days alone in the woods. Thought I was done for. Funny how that feels like a warm-up now.",
+    IGUI_BanditDialog_Answer_Story_NightShift = "I once locked myself inside my workplace on a night shift. Spent six hours trying to get out. Good training for what came next.",
+    IGUI_BanditDialog_Answer_Story_Concert = "I was at a concert when the outbreak news came to everyone's phones. People just... kept dancing. Nobody believed it yet. I miss that kind of ignorance.",
+    IGUI_BanditDialog_Answer_Story_Neighbor = "There was this old woman on my street who always watched everyone from her porch. Turns out she was the one keeping track of everything. She probably knew it was coming before any of us.",
+
+    -- Player tells a joke
+    IGUI_BanditDialog_Option_PlayerTellsJoke = "Tell them a joke",
+    IGUI_BanditDialog_Question_WantToHearJoke = "Want to hear a joke?",
+    IGUI_BanditDialog_Answer_JokeLaugh = "Ha! That's actually pretty good.",
+    IGUI_BanditDialog_Answer_JokeNeutral = "...I've heard better. But okay.",
+    IGUI_BanditDialog_Answer_JokeSurprised = "Ha! You're funnier than you look.",
+    IGUI_BanditDialog_Answer_JokeNeededThat = "I needed that laugh. Thanks.",
+    IGUI_BanditDialog_Answer_JokeBad = "...Was that it? Keep practicing.",
+
 }
