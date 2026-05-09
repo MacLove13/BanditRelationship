@@ -186,7 +186,7 @@ function BanditDialogues.doRandomDialogue(player, zombie, topic)
     stats:set(CharacterStat.BOREDOM, math.max(0, stats:get(CharacterStat.BOREDOM) - randBore))
 
     -- Grant skill XP if the dialogue is tied to a profession skill
-    if dlg.skillName and dlg.skillXPMin and dlg.skillXPMax and dlg.skillXPMax > 0 then
+    if dlg.skillName and dlg.skillXPMax > 0 then
         local xpAmount = BanditDialogues.generateRandomInteger(dlg.skillXPMin, dlg.skillXPMax)
         if xpAmount > 0 then
             local perk = Perks[dlg.skillName]
@@ -616,9 +616,9 @@ function BanditDialogues.loadDialogues()
 
     -- First Aid (Doctor, Nurse, Firefighter)
     BanditDialogues.addDialogOption("expertise", "skill-firstaid", getText("IGUI_BanditDialog_Option_AskAboutFirstAid"), 0, {"Doctor", "Nurse", "Firefighter"})
-    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_1"), getText("IGUI_BanditDialog_A_SkillFirstAid_1"), 3, 6, 1, 4, nil, "Doctor", 10, 20)
-    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_2"), getText("IGUI_BanditDialog_A_SkillFirstAid_2"), 2, 5, 1, 4, nil, "Doctor", 8, 18)
-    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_3"), getText("IGUI_BanditDialog_A_SkillFirstAid_3"), 3, 6, 2, 5, nil, "Doctor", 12, 22)
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_1"), getText("IGUI_BanditDialog_A_SkillFirstAid_1"), 3, 6, 1, 4, nil, "FirstAid", 10, 20)
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_2"), getText("IGUI_BanditDialog_A_SkillFirstAid_2"), 2, 5, 1, 4, nil, "FirstAid", 8, 18)
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_3"), getText("IGUI_BanditDialog_A_SkillFirstAid_3"), 3, 6, 2, 5, nil, "FirstAid", 12, 22)
 
     -- Electrical (Engineer, Programmer)
     BanditDialogues.addDialogOption("expertise", "skill-electrical", getText("IGUI_BanditDialog_Option_AskAboutElectrical"), 0, {"Engineer", "Programmer"})
