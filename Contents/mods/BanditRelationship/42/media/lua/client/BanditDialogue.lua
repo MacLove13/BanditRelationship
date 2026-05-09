@@ -175,9 +175,7 @@ function BanditDialogues.doRandomDialogue(player, zombie, topic)
     BanditRelationships.modifyRelationship(player, brain, randRelation)
     
     local stats = player:getStats()
-    local currentBoredom = stats:getBoredom()
-    local newBoredom = math.max(0, currentBoredom - randBore)
-    stats:setBoredom(newBoredom)
+    stats:set(CharacterStat.BOREDOM, math.max(0, stats:get(CharacterStat.BOREDOM) - randBore))
 end
 
 ------------------------------------------------
@@ -241,7 +239,6 @@ function BanditDialogues.addDialogueMenu(playerID, context, worldobjects, test)
     local gamemode = world:getGameMode()
     local player = getSpecificPlayer(playerID)
     local square = BanditCompatibility.GetClickedSquare()
-    local generator = square:getGenerator()
 
     local zombie = square:getZombie()
     if not zombie then
