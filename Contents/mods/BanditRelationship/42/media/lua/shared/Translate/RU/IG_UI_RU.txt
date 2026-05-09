@@ -424,4 +424,12 @@ IG_UI_RU = {
   IGUI_BanditDialog_Answer_JokeNeededThat = "Мне нужен был этот смех. Спасибо.",
   IGUI_BanditDialog_Answer_JokeBad = "...Это всё? Продолжай практиковаться.",
 
+  -- Меню настроек (ESC -> Mods)
+  UI_BanditDeialogue_OptionsMenu_title = "Диалоги бандитов",
+  UI_BanditDeialogue_OptionsMenu_keybing = "Просмотр списка знакомых",
+  UI_BanditDeialogue_OptionsMenu_RelationshipMenutitle = "Список знакомых",
+  UI_BanditDeialogue_OptionsMenu_RelationshipsTitle = "Знакомые",
+  UI_BanditDeialogue_OptionsMenu_Relationships = "Знакомые",
+  UI_BanditDeialogue_OptionsMenu_RelationshipRemove = "Удалить",
+
 }

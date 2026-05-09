@@ -428,4 +428,12 @@ IG_UI_PTBR = {
 	IGUI_BanditDialog_Answer_JokeNeededThat = "Precisava dessa risada. Valeu.",
 	IGUI_BanditDialog_Answer_JokeBad = "...Era isso? Continua praticando.",
 
+	-- Menu de Opções (ESC -> Mods)
+	UI_BanditDeialogue_OptionsMenu_title = "Diálogos com Bandidos",
+	UI_BanditDeialogue_OptionsMenu_keybing = "Ver lista de conhecidos",
+	UI_BanditDeialogue_OptionsMenu_RelationshipMenutitle = "Lista de Conhecidos",
+	UI_BanditDeialogue_OptionsMenu_RelationshipsTitle = "Conhecidos",
+	UI_BanditDeialogue_OptionsMenu_Relationships = "Conhecidos",
+	UI_BanditDeialogue_OptionsMenu_RelationshipRemove = "Remover",
+
 }
