@@ -428,4 +428,12 @@ IG_UI_EN = {
     IGUI_BanditDialog_Answer_JokeNeededThat = "I needed that laugh. Thanks.",
     IGUI_BanditDialog_Answer_JokeBad = "...Was that it? Keep practicing.",
 
+    -- Options Menu (ESC -> Mods)
+    UI_BanditDeialogue_OptionsMenu_title = "Bandit Dialogues",
+    UI_BanditDeialogue_OptionsMenu_keybing = "View acquaintances list",
+    UI_BanditDeialogue_OptionsMenu_RelationshipMenutitle = "Acquaintances List",
+    UI_BanditDeialogue_OptionsMenu_RelationshipsTitle = "Acquaintances",
+    UI_BanditDeialogue_OptionsMenu_Relationships = "Acquaintances",
+    UI_BanditDeialogue_OptionsMenu_RelationshipRemove = "Remove",
+
 }

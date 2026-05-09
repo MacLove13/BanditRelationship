@@ -1,5 +1,5 @@
 UI_PTBR = {
-	UI_BanditDeialogue_OptionsMenu_title = "Dialogos com Bandidos",
+	UI_BanditDeialogue_OptionsMenu_title = "Diálogos com Bandidos",
 	UI_BanditDeialogue_OptionsMenu_keybing = "Ver lista de conhecidos",
 	UI_BanditDeialogue_OptionsMenu_RelationshipMenutitle = "Lista de Conhecidos",
 
