@@ -166,6 +166,16 @@ IG_UI_UA = {
   IGUI_BanditDialog_Answer_WhatsYourProfession = "Я був ",
   IGUI_BanditDialog_Option_AskProfession = "Яка була ваша професія?",
 
+  IGUI_BanditDialog_Option_AskFamily = "Запитати про сім'ю",
+  IGUI_BanditDialog_Question_WhatHappenedFamily = "Що сталося з вашою сім'єю?",
+  IGUI_BanditDialog_Answer_SonPeterOutThere = "Мій син Пітер десь там... решта... ну, ви розумієте.",
+  IGUI_BanditDialog_Question_DidYouTryFindThem = "Ви намагалися їх знайти?",
+  IGUI_BanditDialog_Answer_HadToStopHoping = "Спочатку намагався. Через деякий час... потрібно перестати сподіватися.",
+  IGUI_BanditDialog_Question_DidYouHaveKids = "У вас були діти?",
+  IGUI_BanditDialog_Answer_DaughterSeven = "Донька. Їй було сім років... намагаюся не думати про це.",
+  IGUI_BanditDialog_Question_WereYouMarried = "Ви були одружені?",
+  IGUI_BanditDialog_Answer_DivorcedDoesntMatter = "В розлученні, насправді. Смішно, що це вже не важливо.",
+
   IGUI_BanditDialog_Option_AskLife = "Запитати про життя",
   IGUI_BanditDialog_Question_WhereWereYou = "Де ви були, коли все почалося?",
   IGUI_BanditDialog_Answer_Traffic = "Застряг у заторі, як завжди.",
@@ -211,6 +221,8 @@ IG_UI_UA = {
   IGUI_BanditDialog_Answer_GoodSleep = "Добрий нічний сон.",
   IGUI_BanditDialog_Question_OptimistBefore = "Чи були ви оптимістом раніше?",
   IGUI_BanditDialog_Answer_LookWhereItLed = "Так... і подивіться, куди це мене привело.",
+  IGUI_BanditDialog_Question_Hope = "Ви все ще тримаєтеся за надію?",
+  IGUI_BanditDialog_Answer_KeepMoving = "Надія — це розкіш... але саме вона змушує мене рухатися.",
   IGUI_BanditDialog_Question_StillHope = "Чи маєте ви ще надію?",
   IGUI_BanditDialog_Answer_HopeDoesntFeed = "Надія не наповнює шлунок.",
   IGUI_BanditDialog_Question_MetWorseThanZombies = "Чи зустрічали ви когось гіршого за зомбі?",
@@ -322,5 +334,52 @@ IG_UI_UA = {
 
 	IGUI_BanditDialog_Question_TellSillyJoke = "Tell me a joke.",
 	IGUI_BanditDialog_Answer_YellowDot = "What's a zombie's favorite bean?",
-	IGUI_BanditDialog_Joke_Fandangos = "A 'human bean'!"
+	IGUI_BanditDialog_Joke_Fandangos = "A 'human bean'!",
+
+  IGUI_BanditDialog_Question_TellZombieJoke = "Tell me a zombie joke.",
+  IGUI_BanditDialog_Answer_ZombieChef = "What do you call a zombie who cooks well?",
+  IGUI_BanditDialog_Joke_DeadbeatChef = "A deadbeat chef!",
+
+  IGUI_BanditDialog_Question_TellAtomJoke = "Got another one for me?",
+  IGUI_BanditDialog_Answer_AtomsLie = "Why don't scientists trust atoms?",
+  IGUI_BanditDialog_Joke_AtomsLie = "Because they make up everything.",
+
+  IGUI_BanditDialog_Question_TellDentistJoke = "One more?",
+  IGUI_BanditDialog_Answer_UsedToHateDentist = "I used to hate the dentist...",
+  IGUI_BanditDialog_Joke_NoDentistNow = "...now there's no one to drill me about brushing.",
+
+  IGUI_BanditDialog_Category_Personal = "Особисте",
+  IGUI_BanditDialog_Option_PersonalPast = "Розкажи про своє минуле",
+  IGUI_BanditDialog_Option_PersonalMissing = "Ти сумуєш за кимось?",
+  IGUI_BanditDialog_Option_PersonalFears = "Чого ти боїшся?",
+
+  IGUI_BanditDialog_Question_WhatWasYourFamily = "Якою була ваша сім'я?",
+  IGUI_BanditDialog_Answer_FamilyCloseThought = "Ми були близькі... або принаймні я так думав. Важко сказати зараз.",
+  IGUI_BanditDialog_Question_WhereDidYouGrowUp = "Де ви виросли?",
+  IGUI_BanditDialog_Answer_SmallTownQuiet = "Маленьке містечко. Нічого особливого. Я ненавидів тишу там... тепер сумую за нею.",
+  IGUI_BanditDialog_Question_CloseFriendsBefore = "У вас були близькі друзі раніше?",
+  IGUI_BanditDialog_Answer_AFewWonderWhere = "Кілька. Цікаво, де вони опинилися.",
+  IGUI_BanditDialog_Question_WishDoneDifferently = "Що б ви зробили по-іншому?",
+  IGUI_BanditDialog_Answer_ToldThemMoreOften = "Я б частіше говорив людям, що вони для мене значать.",
+  IGUI_BanditDialog_Question_HappiestMemory = "Яким був ваш найщасливіший спогад?",
+  IGUI_BanditDialog_Answer_CampingTrip = "Похід із сім'єю... до всього цього. Просто, але ідеально.",
+
+  IGUI_BanditDialog_Question_StillLookingForSomeone = "Ви все ще когось шукаєте?",
+  IGUI_BanditDialog_Answer_TryNotToThink = "Можливо... намагаюся не думати про це занадто.",
+  IGUI_BanditDialog_Question_LostSomeoneClose = "Ви втратили когось близького?",
+  IGUI_BanditDialog_Answer_TalkingDoesntHelp = "Так... але розмови про це не допомагають.",
+  IGUI_BanditDialog_Question_WhatWouldYouSay = "Що б ви сказали їм, якби могли?",
+  IGUI_BanditDialog_Answer_SorryForNotBeing = "Я б сказав, що шкодую, що не був поруч, коли це мало значення.",
+  IGUI_BanditDialog_Question_IsAnyoneLookingForYou = "Ви думаєте, хтось вас шукає?",
+  IGUI_BanditDialog_Answer_ProbablyNot = "Мабуть, ні. Я не був таким важливим ні для кого.",
+
+  IGUI_BanditDialog_Question_KeepsYouUpAtNight = "Що не дає вам спати вночі?",
+  IGUI_BanditDialog_Answer_SilenceMeansWrong = "Тиша... зазвичай це означає, що щось не так.",
+  IGUI_BanditDialog_Question_AfraidOfDying = "Ви боїтеся смерті?",
+  IGUI_BanditDialog_Answer_AloneScalesMore = "Всі бояться. Але самотність лякає мене більше.",
+  IGUI_BanditDialog_Question_BiggestFearNow = "Чого ви боїтеся найбільше зараз?",
+  IGUI_BanditDialog_Answer_LosingMindBecomeOne = "Втратити розум і стати одним із них.",
+  IGUI_BanditDialog_Question_EverFeelHopeless = "Ви коли-небудь відчуваєте безнадійність?",
+  IGUI_BanditDialog_Answer_KeepGoingAnyway = "Іноді. Але я продовжую рухатися попри все... мабуть, звичка.",
+
 }

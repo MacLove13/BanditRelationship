@@ -298,6 +298,12 @@ function BanditDialogues.loadDialogues()
 
     BanditDialogues.addDialogOption("know", "know-profession", getText("IGUI_BanditDialog_Option_AskProfession"), 0)
     BanditDialogues.addDialogOption("know", "know-one", getText("IGUI_BanditDialog_Option_AskLife"), 0)
+    BanditDialogues.addDialogOption("know", "know-two", getText("IGUI_BanditDialog_Option_AskFamily"), 0)
+
+    BanditDialogues.addDialogue("know-two", getText("IGUI_BanditDialog_Question_WhatHappenedFamily"), getText("IGUI_BanditDialog_Answer_SonPeterOutThere"), 3, 6, -2, 3)
+    BanditDialogues.addDialogue("know-two", getText("IGUI_BanditDialog_Question_DidYouTryFindThem"), getText("IGUI_BanditDialog_Answer_HadToStopHoping"), 3, 5, -1, 3)
+    BanditDialogues.addDialogue("know-two", getText("IGUI_BanditDialog_Question_DidYouHaveKids"), getText("IGUI_BanditDialog_Answer_DaughterSeven"), 4, 7, -3, 2)
+    BanditDialogues.addDialogue("know-two", getText("IGUI_BanditDialog_Question_WereYouMarried"), getText("IGUI_BanditDialog_Answer_DivorcedDoesntMatter"), 2, 5, 0, 3)
 
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_WhereWereYou"), getText("IGUI_BanditDialog_Answer_Traffic"), 2, 4, 0, 3)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_MetSomeone"), getText("IGUI_BanditDialog_Answer_BetterThisWay"), 2, 5, -1, 4)
@@ -328,9 +334,6 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_BelieveLuck"), getText("IGUI_BanditDialog_Answer_LuckFood"), 2, 5, 1, 5)
     BanditDialogues.addDialogue("know-one", getText("IGUI_BanditDialog_Question_WorstExperience"), getText("IGUI_BanditDialog_Answer_TrappedForDays"), 4, 6, -2, 2)
 
-    -- BanditDialogues.addDialogOption("know", "know-two", "Perguntar sobre a familia", 0)
-    -- BanditDialogues.addDialogue("know-two", "O que aconteceu com sua familia?", "Meu filho Peter deve estar por ai, mas os outros... bem, voce sabe.", 2, 5, 1, 5)
-    
     -- ===================================================================================
     -- Friendly
     BanditDialogues.addCategory("none", "friendly", getText("IGUI_BanditDialog_Category_Friendly"), 0)
@@ -382,6 +385,9 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellFunnyJoke"), getText("IGUI_BanditDialog_Answer_Duck"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_Quack"))
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellShortJoke"), getText("IGUI_BanditDialog_Answer_Chicken"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_CrossRoad"))
     BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellSillyJoke"), getText("IGUI_BanditDialog_Answer_YellowDot"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_Fandangos"))
+    BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellZombieJoke"), getText("IGUI_BanditDialog_Answer_ZombieChef"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_DeadbeatChef"))
+    BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellAtomJoke"), getText("IGUI_BanditDialog_Answer_AtomsLie"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_AtomsLie"))
+    BanditDialogues.addDialogue("jokes-one", getText("IGUI_BanditDialog_Question_TellDentistJoke"), getText("IGUI_BanditDialog_Answer_UsedToHateDentist"), 2, 5, 1, 5, getText("IGUI_BanditDialog_Joke_NoDentistNow"))
 
 
     -- ===================================================================================
@@ -430,6 +436,32 @@ function BanditDialogues.loadDialogues()
     BanditDialogues.addDialogue("survive-one", getText("IGUI_BanditDialog_Question_AnySurviveHint"), getText("IGUI_BanditDialog_Answer_AnySurviveHint_38"), 2, 5, 1, 5)
     BanditDialogues.addDialogue("survive-one", getText("IGUI_BanditDialog_Question_AnySurviveHint"), getText("IGUI_BanditDialog_Answer_AnySurviveHint_39"), 2, 5, 1, 5)
     BanditDialogues.addDialogue("survive-one", getText("IGUI_BanditDialog_Question_AnySurviveHint"), getText("IGUI_BanditDialog_Answer_AnySurviveHint_40"), 2, 5, 1, 5)
+
+    -- ===================================================================================
+    -- Personal (requires relation >= 30)
+    BanditDialogues.addCategory("friendly", "personal", getText("IGUI_BanditDialog_Category_Personal"), 30)
+
+    -- Submenu 1: Past
+    BanditDialogues.addDialogOption("personal", "personal-past", getText("IGUI_BanditDialog_Option_PersonalPast"), 0)
+    BanditDialogues.addDialogue("personal-past", getText("IGUI_BanditDialog_Question_WhatWasYourFamily"), getText("IGUI_BanditDialog_Answer_FamilyCloseThought"), 3, 6, 1, 5)
+    BanditDialogues.addDialogue("personal-past", getText("IGUI_BanditDialog_Question_WhereDidYouGrowUp"), getText("IGUI_BanditDialog_Answer_SmallTownQuiet"), 2, 5, 1, 4)
+    BanditDialogues.addDialogue("personal-past", getText("IGUI_BanditDialog_Question_CloseFriendsBefore"), getText("IGUI_BanditDialog_Answer_AFewWonderWhere"), 2, 4, 0, 3)
+    BanditDialogues.addDialogue("personal-past", getText("IGUI_BanditDialog_Question_WishDoneDifferently"), getText("IGUI_BanditDialog_Answer_ToldThemMoreOften"), 3, 6, 1, 5)
+    BanditDialogues.addDialogue("personal-past", getText("IGUI_BanditDialog_Question_HappiestMemory"), getText("IGUI_BanditDialog_Answer_CampingTrip"), 3, 7, 2, 6)
+
+    -- Submenu 2: Missing
+    BanditDialogues.addDialogOption("personal", "personal-missing", getText("IGUI_BanditDialog_Option_PersonalMissing"), 0)
+    BanditDialogues.addDialogue("personal-missing", getText("IGUI_BanditDialog_Question_StillLookingForSomeone"), getText("IGUI_BanditDialog_Answer_TryNotToThink"), 3, 5, -1, 3)
+    BanditDialogues.addDialogue("personal-missing", getText("IGUI_BanditDialog_Question_LostSomeoneClose"), getText("IGUI_BanditDialog_Answer_TalkingDoesntHelp"), 4, 7, -2, 2)
+    BanditDialogues.addDialogue("personal-missing", getText("IGUI_BanditDialog_Question_WhatWouldYouSay"), getText("IGUI_BanditDialog_Answer_SorryForNotBeing"), 4, 6, 1, 5)
+    BanditDialogues.addDialogue("personal-missing", getText("IGUI_BanditDialog_Question_IsAnyoneLookingForYou"), getText("IGUI_BanditDialog_Answer_ProbablyNot"), 3, 5, -2, 2)
+
+    -- Submenu 3: Fears
+    BanditDialogues.addDialogOption("personal", "personal-fears", getText("IGUI_BanditDialog_Option_PersonalFears"), 0)
+    BanditDialogues.addDialogue("personal-fears", getText("IGUI_BanditDialog_Question_KeepsYouUpAtNight"), getText("IGUI_BanditDialog_Answer_SilenceMeansWrong"), 3, 5, 0, 4)
+    BanditDialogues.addDialogue("personal-fears", getText("IGUI_BanditDialog_Question_AfraidOfDying"), getText("IGUI_BanditDialog_Answer_AloneScalesMore"), 3, 6, 1, 5)
+    BanditDialogues.addDialogue("personal-fears", getText("IGUI_BanditDialog_Question_BiggestFearNow"), getText("IGUI_BanditDialog_Answer_LosingMindBecomeOne"), 3, 6, -1, 4)
+    BanditDialogues.addDialogue("personal-fears", getText("IGUI_BanditDialog_Question_EverFeelHopeless"), getText("IGUI_BanditDialog_Answer_KeepGoingAnyway"), 3, 6, 1, 5)
 
     BanditDialogues.addCategory("none", "debug", "[Debug]", -100)
     BanditDialogues.addDialogOption("debug", "reset-relationship", "Reset Relation", -100)

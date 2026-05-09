@@ -166,6 +166,16 @@ IG_UI_RU = {
   IGUI_BanditDialog_Answer_WhatsYourProfession = "Я был ",
   IGUI_BanditDialog_Option_AskProfession = "Кем вы работали?",
 
+  IGUI_BanditDialog_Option_AskFamily = "Спросить о семье",
+  IGUI_BanditDialog_Question_WhatHappenedFamily = "Что случилось с вашей семьей?",
+  IGUI_BanditDialog_Answer_SonPeterOutThere = "Мой сын Питер где-то там... остальные... ну, вы понимаете.",
+  IGUI_BanditDialog_Question_DidYouTryFindThem = "Вы пытались их найти?",
+  IGUI_BanditDialog_Answer_HadToStopHoping = "Поначалу пытался. Через какое-то время... нужно перестать надеяться.",
+  IGUI_BanditDialog_Question_DidYouHaveKids = "У вас были дети?",
+  IGUI_BanditDialog_Answer_DaughterSeven = "Дочь. Ей было семь лет... стараюсь не думать об этом.",
+  IGUI_BanditDialog_Question_WereYouMarried = "Вы были женаты?",
+  IGUI_BanditDialog_Answer_DivorcedDoesntMatter = "В разводе, на самом деле. Смешно, как это уже не важно.",
+
   IGUI_BanditDialog_Option_AskLife = "Спросить о жизни",
   IGUI_BanditDialog_Question_WhereWereYou = "Где вы были, когда все началось?",
   IGUI_BanditDialog_Answer_Traffic = "Застрял в пробке, как всегда.",
@@ -211,6 +221,8 @@ IG_UI_RU = {
   IGUI_BanditDialog_Answer_GoodSleep = "Хороший ночной сон.",
   IGUI_BanditDialog_Question_OptimistBefore = "Вы были оптимистом раньше?",
   IGUI_BanditDialog_Answer_LookWhereItLed = "Да... и посмотрите, куда это меня привело.",
+  IGUI_BanditDialog_Question_Hope = "Вы всё ещё держитесь за надежду?",
+  IGUI_BanditDialog_Answer_KeepMoving = "Надежда — это роскошь... но именно она заставляет меня двигаться.",
   IGUI_BanditDialog_Question_StillHope = "У вас все еще есть надежда?",
   IGUI_BanditDialog_Answer_HopeDoesntFeed = "Надежда не насытит ваш желудок.",
   IGUI_BanditDialog_Question_MetWorseThanZombies = "Вы встречали кого-нибудь хуже зомби?",
@@ -322,6 +334,52 @@ IG_UI_RU = {
 
 	IGUI_BanditDialog_Question_TellSillyJoke = "Tell me a joke.",
 	IGUI_BanditDialog_Answer_YellowDot = "What's a zombie's favorite bean?",
-	IGUI_BanditDialog_Joke_Fandangos = "A 'human bean'!"
+	IGUI_BanditDialog_Joke_Fandangos = "A 'human bean'!",
+
+  IGUI_BanditDialog_Question_TellZombieJoke = "Tell me a zombie joke.",
+  IGUI_BanditDialog_Answer_ZombieChef = "What do you call a zombie who cooks well?",
+  IGUI_BanditDialog_Joke_DeadbeatChef = "A deadbeat chef!",
+
+  IGUI_BanditDialog_Question_TellAtomJoke = "Got another one for me?",
+  IGUI_BanditDialog_Answer_AtomsLie = "Why don't scientists trust atoms?",
+  IGUI_BanditDialog_Joke_AtomsLie = "Because they make up everything.",
+
+  IGUI_BanditDialog_Question_TellDentistJoke = "One more?",
+  IGUI_BanditDialog_Answer_UsedToHateDentist = "I used to hate the dentist...",
+  IGUI_BanditDialog_Joke_NoDentistNow = "...now there's no one to drill me about brushing.",
+
+  IGUI_BanditDialog_Category_Personal = "Личное",
+  IGUI_BanditDialog_Option_PersonalPast = "Расскажи о своём прошлом",
+  IGUI_BanditDialog_Option_PersonalMissing = "Ты скучаешь по кому-нибудь?",
+  IGUI_BanditDialog_Option_PersonalFears = "Чего ты боишься?",
+
+  IGUI_BanditDialog_Question_WhatWasYourFamily = "Какой была ваша семья?",
+  IGUI_BanditDialog_Answer_FamilyCloseThought = "Мы были близки... или, по крайней мере, я так думал. Сложно сказать сейчас.",
+  IGUI_BanditDialog_Question_WhereDidYouGrowUp = "Где вы выросли?",
+  IGUI_BanditDialog_Answer_SmallTownQuiet = "Маленький городок. Ничего особенного. Я ненавидел тишину там... теперь скучаю по ней.",
+  IGUI_BanditDialog_Question_CloseFriendsBefore = "У вас были близкие друзья раньше?",
+  IGUI_BanditDialog_Answer_AFewWonderWhere = "Несколько. Интересно, где они теперь.",
+  IGUI_BanditDialog_Question_WishDoneDifferently = "Что бы вы сделали по-другому?",
+  IGUI_BanditDialog_Answer_ToldThemMoreOften = "Я бы чаще говорил людям, что они для меня значат.",
+  IGUI_BanditDialog_Question_HappiestMemory = "Какое ваше самое счастливое воспоминание?",
+  IGUI_BanditDialog_Answer_CampingTrip = "Поход с семьёй... до всего этого. Просто, но идеально.",
+
+  IGUI_BanditDialog_Question_StillLookingForSomeone = "Вы всё ещё кого-то ищете?",
+  IGUI_BanditDialog_Answer_TryNotToThink = "Может быть... стараюсь не думать об этом слишком много.",
+  IGUI_BanditDialog_Question_LostSomeoneClose = "Вы потеряли кого-то близкого?",
+  IGUI_BanditDialog_Answer_TalkingDoesntHelp = "Да... но разговоры об этом не помогают.",
+  IGUI_BanditDialog_Question_WhatWouldYouSay = "Что бы вы сказали им, если бы могли?",
+  IGUI_BanditDialog_Answer_SorryForNotBeing = "Я бы сказал, что сожалею о том, что не был рядом, когда это было важно.",
+  IGUI_BanditDialog_Question_IsAnyoneLookingForYou = "Вы думаете, кто-нибудь вас ищет?",
+  IGUI_BanditDialog_Answer_ProbablyNot = "Скорее всего, нет. Я не был так важен ни для кого.",
+
+  IGUI_BanditDialog_Question_KeepsYouUpAtNight = "Что не даёт вам спать по ночам?",
+  IGUI_BanditDialog_Answer_SilenceMeansWrong = "Тишина... обычно это означает, что что-то не так.",
+  IGUI_BanditDialog_Question_AfraidOfDying = "Вы боитесь умереть?",
+  IGUI_BanditDialog_Answer_AloneScalesMore = "Все боятся. Но одиночество пугает меня больше.",
+  IGUI_BanditDialog_Question_BiggestFearNow = "Чего вы боитесь больше всего сейчас?",
+  IGUI_BanditDialog_Answer_LosingMindBecomeOne = "Потерять рассудок и стать одним из них.",
+  IGUI_BanditDialog_Question_EverFeelHopeless = "Вы когда-нибудь чувствуете безнадёжность?",
+  IGUI_BanditDialog_Answer_KeepGoingAnyway = "Иногда. Но я всё равно продолжаю... наверное, привычка.",
 
 }
