@@ -432,4 +432,70 @@ IG_UI_UA = {
   UI_BanditDeialogue_OptionsMenu_Relationships = "Знайомі",
   UI_BanditDeialogue_OptionsMenu_RelationshipRemove = "Видалити",
 
+  -- Категорія Експертиза (обмежена професією)
+  IGUI_BanditDialog_Category_Expertise = "Запитати про експертизу",
+  IGUI_BanditDialog_Option_AskAboutCarpentry = "Запитати про столярство",
+  IGUI_BanditDialog_Option_AskAboutMechanics = "Запитати про механіку",
+  IGUI_BanditDialog_Option_AskAboutCooking = "Запитати про кулінарію",
+  IGUI_BanditDialog_Option_AskAboutFarming = "Запитати про землеробство",
+  IGUI_BanditDialog_Option_AskAboutFirstAid = "Запитати про першу допомогу",
+  IGUI_BanditDialog_Option_AskAboutElectrical = "Запитати про електрику",
+  IGUI_BanditDialog_Option_AskAboutAiming = "Запитати про стрільбу",
+
+  -- Діалоги столяра
+  IGUI_BanditDialog_Q_SkillCarpentry_1 = "Можеш навчити мене чомусь про столярство?",
+  IGUI_BanditDialog_A_SkillCarpentry_1 = "Завжди міряй двічі, ріж один раз. І тримай інструменти гострими — тупа пила небезпечна і робить погану роботу.",
+  IGUI_BanditDialog_Q_SkillCarpentry_2 = "Що найкорисніше ти побудував?",
+  IGUI_BanditDialog_A_SkillCarpentry_2 = "Міцні з'єднання — міцні конструкції. Навчись правильно забивати цвяхи й закручувати шурупи, і зможеш побудувати майже будь-що.",
+  IGUI_BanditDialog_Q_SkillCarpentry_3 = "Як зміцнити базу тут?",
+  IGUI_BanditDialog_A_SkillCarpentry_3 = "Подвій стіни, зміцни кути і завжди будуй на нормальному фундаменті. Помилки тут коштують життя.",
+
+  -- Діалоги механіка
+  IGUI_BanditDialog_Q_SkillMechanics_1 = "Як ти підтримуєш транспорт на ходу тут?",
+  IGUI_BanditDialog_A_SkillMechanics_1 = "Спочатку перевір рідини — масло, охолодження, гальма. Якщо їде, слухай, що звучить неправильно. Двигуни говорять, якщо дати їм слово.",
+  IGUI_BanditDialog_Q_SkillMechanics_2 = "Який ремонт авто найлегше освоїти?",
+  IGUI_BanditDialog_A_SkillMechanics_2 = "Заміна коліс і акумулятора. Потім ремені й фільтри. Прості речі тримають авто живим довше за все інше.",
+  IGUI_BanditDialog_Q_SkillMechanics_3 = "Як зрозуміти, чи варто ремонтувати двигун?",
+  IGUI_BanditDialog_A_SkillMechanics_3 = "Дим, стукіт, заклинені деталі — це кінець. В іншому випадку майже все можна полагодити, якщо є час і запчастини.",
+
+  -- Діалоги кулінарії
+  IGUI_BanditDialog_Q_SkillCooking_1 = "Є поради щодо приготування їжі з обмеженими ресурсами?",
+  IGUI_BanditDialog_A_SkillCooking_1 = "Ти здивуєшся, що можна зробити з консервами та вогнем. Приправляй все і ніколи не витрачай жир даремно — він дає смак і калорії.",
+  IGUI_BanditDialog_Q_SkillCooking_2 = "Як зрозуміти, чи безпечна їжа?",
+  IGUI_BanditDialog_A_SkillCooking_2 = "Понюхай і подивись. Якщо пахне погано або є цвіль — викинь. Сумніваєшся — вари, тепло вбиває більшість бактерій.",
+  IGUI_BanditDialog_Q_SkillCooking_3 = "Що найлегше приготувати без обладнання?",
+  IGUI_BanditDialog_A_SkillCooking_3 = "Рагу. Один казан, вода і що знайдеш. Вари достатньо довго і майже все стане їстівним.",
+
+  -- Діалоги землеробства
+  IGUI_BanditDialog_Q_SkillFarming_1 = "Ти вмієш вирощувати їжу?",
+  IGUI_BanditDialog_A_SkillFarming_1 = "Гарний ґрунт, вода, сонце і терпіння. Підняті грядки зручні — краще дренаж і шкідники менше добираються до коренів.",
+  IGUI_BanditDialog_Q_SkillFarming_2 = "Що тут найлегше вирощувати?",
+  IGUI_BanditDialog_A_SkillFarming_2 = "Картопля і квасоля. Ростуть швидко, невибагливі й дають калорії. Помідори теж, якщо є насіння.",
+  IGUI_BanditDialog_Q_SkillFarming_3 = "Як боротися зі шкідниками на посівах?",
+  IGUI_BanditDialog_A_SkillFarming_3 = "Чергуй культури і тримай ділянку чистою. Сумісні посадки теж допомагають — деякі рослини відганяють комах від сусідів.",
+
+  -- Діалоги першої допомоги
+  IGUI_BanditDialog_Q_SkillFirstAid_1 = "Ти вмієш лікувати рани тут?",
+  IGUI_BanditDialog_A_SkillFirstAid_1 = "Одразу промий, завжди. Тиск зупиняє кров. Без антибіотиків інфекція — справжній вбивця. Стеж за почервонінням і температурою.",
+  IGUI_BanditDialog_Q_SkillFirstAid_2 = "Що найважливіше в аптечці?",
+  IGUI_BanditDialog_A_SkillFirstAid_2 = "Антисептик і бинти. Решта вторинна. Чиста перев'язана рана загоїться. Брудна — ні.",
+  IGUI_BanditDialog_Q_SkillFirstAid_3 = "Як лікувати перелом без нічого?",
+  IGUI_BanditDialog_A_SkillFirstAid_3 = "Шина — підійде будь-який прямий жорсткий матеріал. Прив'яжи, знерухом сустав, не давай ходити. І молись.",
+
+  -- Діалоги електрика
+  IGUI_BanditDialog_Q_SkillElectrical_1 = "Як отримати електроенергію без мережі?",
+  IGUI_BanditDialog_A_SkillElectrical_1 = "Генератор — найкращий варіант. Тримай паливо свіжим, не перевантажуй і розміщуй подалі від місць для сну — чадний газ вбиває тихо.",
+  IGUI_BanditDialog_Q_SkillElectrical_2 = "Є поради щодо електричних проблем?",
+  IGUI_BanditDialog_A_SkillElectrical_2 = "Ніколи не торкайся нічого під напругою. Завжди спочатку вимкни живлення. Автомат — не просто так. Якщо вибиває знову, проблема вище.",
+  IGUI_BanditDialog_Q_SkillElectrical_3 = "Як безпечно зробити проводку?",
+  IGUI_BanditDialog_A_SkillElectrical_3 = "Підбирай потрібний перетин дроту, добре затягуй з'єднання й ізолюй все. Погана ізоляція викликає пожежу. Пожежа тут — смертний вирок.",
+
+  -- Діалоги прицілювання
+  IGUI_BanditDialog_Q_SkillAiming_1 = "Можеш дати поради щодо стрільби?",
+  IGUI_BanditDialog_A_SkillAiming_1 = "Контролюй дихання. Натискай спусковий гачок, не смикай. І фокусуйся на мушці — все інше розмивається, і це нормально.",
+  IGUI_BanditDialog_Q_SkillAiming_2 = "Як зберегти точність, коли страшно?",
+  IGUI_BanditDialog_A_SkillAiming_2 = "Тренування. М'язова пам'ять бере гору, коли мозок паралізований страхом. Тренуйся вхолосту щовечора — повторення вирішує все.",
+  IGUI_BanditDialog_Q_SkillAiming_3 = "Яка найчастіша помилка зі зброєю?",
+  IGUI_BanditDialog_A_SkillAiming_3 = "Паніка і стрілянина навмання. Промажеш і витратиш набої. Уповільнись, прицілься і зроби постріл, який рахується. Набої — це виживання.",
+
 }

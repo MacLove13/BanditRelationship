@@ -436,4 +436,70 @@ IG_UI_PTBR = {
 	UI_BanditDeialogue_OptionsMenu_Relationships = "Conhecidos",
 	UI_BanditDeialogue_OptionsMenu_RelationshipRemove = "Remover",
 
+	-- Categoria de Especialidade (bloqueada por profissão)
+	IGUI_BanditDialog_Category_Expertise = "Perguntar sobre especialidade",
+	IGUI_BanditDialog_Option_AskAboutCarpentry = "Perguntar sobre carpintaria",
+	IGUI_BanditDialog_Option_AskAboutMechanics = "Perguntar sobre mecânica",
+	IGUI_BanditDialog_Option_AskAboutCooking = "Perguntar sobre culinária",
+	IGUI_BanditDialog_Option_AskAboutFarming = "Perguntar sobre agricultura",
+	IGUI_BanditDialog_Option_AskAboutFirstAid = "Perguntar sobre primeiros socorros",
+	IGUI_BanditDialog_Option_AskAboutElectrical = "Perguntar sobre elétrica",
+	IGUI_BanditDialog_Option_AskAboutAiming = "Perguntar sobre pontaria",
+
+	-- Diálogos de Carpintaria
+	IGUI_BanditDialog_Q_SkillCarpentry_1 = "Pode me ensinar algo sobre carpintaria?",
+	IGUI_BanditDialog_A_SkillCarpentry_1 = "Sempre meça duas vezes, corte uma. E mantenha suas ferramentas afiadas — uma serra cega é perigosa e faz trabalho porco.",
+	IGUI_BanditDialog_Q_SkillCarpentry_2 = "O que de mais útil você já construiu?",
+	IGUI_BanditDialog_A_SkillCarpentry_2 = "Juntas sólidas fazem estruturas sólidas. Aprenda a pregar e parafusar direito e você consegue construir quase qualquer coisa.",
+	IGUI_BanditDialog_Q_SkillCarpentry_3 = "Como reforçar uma base aqui fora?",
+	IGUI_BanditDialog_A_SkillCarpentry_3 = "Duplique as paredes, reforce os cantos e sempre construa numa fundação de verdade. Atalhos matam pessoas.",
+
+	-- Diálogos de Mecânica
+	IGUI_BanditDialog_Q_SkillMechanics_1 = "Como você mantém um veículo funcionando aqui fora?",
+	IGUI_BanditDialog_A_SkillMechanics_1 = "Verifique os fluidos primeiro — óleo, radiador, freio. Se estiver rodando, escute o que soa errado. Motor fala se você deixar.",
+	IGUI_BanditDialog_Q_SkillMechanics_2 = "Qual é o reparo mais fácil de aprender em carros?",
+	IGUI_BanditDialog_A_SkillMechanics_2 = "Troca de pneu e de bateria. Depois, correias e filtros. Coisa simples mantém o carro vivo mais do que qualquer outra coisa.",
+	IGUI_BanditDialog_Q_SkillMechanics_3 = "Como sei se um motor vale a pena consertar?",
+	IGUI_BanditDialog_A_SkillMechanics_3 = "Fumaça, baque, peças travadas — esses são sinais de que acabou. Caso contrário, quase tudo tem conserto se você tiver tempo e peças.",
+
+	-- Diálogos de Culinária
+	IGUI_BanditDialog_Q_SkillCooking_1 = "Alguma dica pra cozinhar com poucos recursos?",
+	IGUI_BanditDialog_A_SkillCooking_1 = "Você se surpreende com o que dá pra fazer com conservas e fogo. Tempere tudo e nunca desperdice gordura — dá sabor e calorias.",
+	IGUI_BanditDialog_Q_SkillCooking_2 = "Como saber se comida ainda está boa?",
+	IGUI_BanditDialog_A_SkillCooking_2 = "Cheire e olhe. Se tiver cheiro ruim ou mofo visível, joga fora. Na dúvida, cozinha — o calor mata a maioria das coisas.",
+	IGUI_BanditDialog_Q_SkillCooking_3 = "O que é mais fácil de cozinhar sem equipamento?",
+	IGUI_BanditDialog_A_SkillCooking_3 = "Ensopado. Uma panela, água e o que você achar. Ferva tempo suficiente e quase qualquer coisa fica comestível.",
+
+	-- Diálogos de Agricultura
+	IGUI_BanditDialog_Q_SkillFarming_1 = "Você sabe como cultivar comida?",
+	IGUI_BanditDialog_A_SkillFarming_1 = "Solo bom, água, luz do sol e paciência. Canteiros elevados ajudam — drena melhor e mantém pragas longe das raízes.",
+	IGUI_BanditDialog_Q_SkillFarming_2 = "O que é mais fácil de cultivar aqui fora?",
+	IGUI_BanditDialog_A_SkillFarming_2 = "Batata e feijão. Crescem rápido, não precisam de muito e dão calorias. Tomate também, se você tiver sementes.",
+	IGUI_BanditDialog_Q_SkillFarming_3 = "Como lidar com pragas nas plantações?",
+	IGUI_BanditDialog_A_SkillFarming_3 = "Rotacione as culturas e mantenha a área limpa. Plantio consorciado ajuda também — algumas plantas afastam insetos das outras naturalmente.",
+
+	-- Diálogos de Primeiros Socorros
+	IGUI_BanditDialog_Q_SkillFirstAid_1 = "Você sabe como tratar ferimentos aqui fora?",
+	IGUI_BanditDialog_A_SkillFirstAid_1 = "Limpe imediatamente, sempre. Pressão para o sangramento. Sem antibióticos, a infecção é o que realmente mata — fique de olho em vermelhidão e febre.",
+	IGUI_BanditDialog_Q_SkillFirstAid_2 = "O que é mais importante num kit de primeiros socorros?",
+	IGUI_BanditDialog_A_SkillFirstAid_2 = "Antisséptico e curativo. O resto é secundário. Uma ferida limpa e bem enfaixada cicatriza. Uma suja, não.",
+	IGUI_BanditDialog_Q_SkillFirstAid_3 = "Como tratar um osso quebrado sem nada?",
+	IGUI_BanditDialog_A_SkillFirstAid_3 = "Tala — qualquer material rígido e reto serve. Amarre no lugar, imobilize a articulação, não deixe andar em cima. E reze.",
+
+	-- Diálogos de Elétrica
+	IGUI_BanditDialog_Q_SkillElectrical_1 = "Como conseguir energia sem a rede elétrica?",
+	IGUI_BanditDialog_A_SkillElectrical_1 = "Gerador é sua melhor aposta. Mantenha o combustível fresco, não sobrecarregue e coloque longe de onde as pessoas dormem — monóxido de carbono mata em silêncio.",
+	IGUI_BanditDialog_Q_SkillElectrical_2 = "Alguma dica para lidar com problemas elétricos?",
+	IGUI_BanditDialog_A_SkillElectrical_2 = "Nunca toque em nada energizado. Sempre desligue antes. Disjuntor existe por um motivo — se disparar repetidamente, tem algo errado na origem.",
+	IGUI_BanditDialog_Q_SkillElectrical_3 = "Como fazer uma fiação com segurança?",
+	IGUI_BanditDialog_A_SkillElectrical_3 = "Use bitola certa, aperte bem as conexões e isole tudo. Isolamento ruim causa incêndio. Incêndio aqui fora é sentença de morte.",
+
+	-- Diálogos de Pontaria
+	IGUI_BanditDialog_Q_SkillAiming_1 = "Pode me dar dicas de tiro?",
+	IGUI_BanditDialog_A_SkillAiming_1 = "Controle a respiração. Aperte o gatilho, não puxe. E foque na mira dianteira — o resto fica desfocado, e tá certo assim.",
+	IGUI_BanditDialog_Q_SkillAiming_2 = "Como manter a precisão quando está com medo?",
+	IGUI_BanditDialog_A_SkillAiming_2 = "Treinamento. A memória muscular assume quando o cérebro trava de medo. Pratique sem bala toda noite se puder — repetição é tudo.",
+	IGUI_BanditDialog_Q_SkillAiming_3 = "Qual é o maior erro que as pessoas cometem com armas?",
+	IGUI_BanditDialog_A_SkillAiming_3 = "Entrar em pânico e atirar rápido. Vai errar e vai desperdiçar munição. Calma, mira e um tiro que conta. Munição é sobrevivência.",
+
 }

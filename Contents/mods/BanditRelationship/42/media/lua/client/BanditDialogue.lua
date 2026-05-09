@@ -17,8 +17,11 @@ BanditDialogues.dialogues = {}
 --- @param earnRelationMin int - Min Relation to change
 --- @param earnRelationMax int - Max Relation to change
 --- @param jokeResponse string - Response to Joke only
+--- @param skillName string - Perks key to grant XP (e.g. "Carpentry"), optional
+--- @param skillXPMin int - Min XP to grant, optional
+--- @param skillXPMax int - Max XP to grant, optional
 
-function BanditDialogues.addDialogue(topic, playerLine, banditLine, earnBoreMin, earnBoreMax, earnRelationMin, earnRelationMax, jokeResponse)
+function BanditDialogues.addDialogue(topic, playerLine, banditLine, earnBoreMin, earnBoreMax, earnRelationMin, earnRelationMax, jokeResponse, skillName, skillXPMin, skillXPMax)
     -- Se a categoria não existir, cria
     if not BanditDialogues.dialogues[topic] then
         BanditDialogues.dialogues[topic] = {}
@@ -32,6 +35,9 @@ function BanditDialogues.addDialogue(topic, playerLine, banditLine, earnBoreMin,
         earnRelationMin = earnRelationMin,
         earnRelationMax = earnRelationMax,
         jokeResponse = jokeResponse,
+        skillName = skillName,
+        skillXPMin = skillXPMin or 0,
+        skillXPMax = skillXPMax or 0,
     })
 end
 
@@ -65,8 +71,9 @@ end
 --- @param uniqueId string - example: "friedly-one"
 --- @param name string - Topic name
 --- @param minRelation int - Min Relationship to see this topic
+--- @param requiredProfessions table - Optional list of profession strings required to see this option
 
-function BanditDialogues.addDialogOption(insideCategory, uniqueId, name, minRelation)
+function BanditDialogues.addDialogOption(insideCategory, uniqueId, name, minRelation, requiredProfessions)
     if not BanditDialogues.dialogOptions[uniqueId] then
         BanditDialogues.dialogOptions[uniqueId] = {}
     end
@@ -76,7 +83,8 @@ function BanditDialogues.addDialogOption(insideCategory, uniqueId, name, minRela
         unique_id = uniqueId,
         inside_category = insideCategory,
         name = name,
-        min_relation = minRelation
+        min_relation = minRelation,
+        required_professions = requiredProfessions,
     })
 end
 
@@ -176,6 +184,67 @@ function BanditDialogues.doRandomDialogue(player, zombie, topic)
     
     local stats = player:getStats()
     stats:set(CharacterStat.BOREDOM, math.max(0, stats:get(CharacterStat.BOREDOM) - randBore))
+
+    -- Grant skill XP if the dialogue is tied to a profession skill
+    if dlg.skillName and dlg.skillXPMin and dlg.skillXPMax and dlg.skillXPMax > 0 then
+        local xpAmount = BanditDialogues.generateRandomInteger(dlg.skillXPMin, dlg.skillXPMax)
+        if xpAmount > 0 then
+            local perk = Perks[dlg.skillName]
+            if perk then
+                player:getXp():AddXP(perk, xpAmount)
+            end
+        end
+    end
+end
+
+------------------------------------------------
+--- Get relationship for a companion zombie, or nil if not a companion
+------------------------------------------------
+function BanditDialogues.getCompanionRelationship(player, zombie)
+    local brain = BanditBrain.Get(zombie)
+    if not brain or (brain.program.name ~= "Companion" and brain.program.name ~= "CompanionGuard") then
+        return nil
+    end
+    return BanditRelationships.getRelationship(player, brain)
+end
+
+------------------------------------------------
+--- Check if a category has any visible options for the given bandit
+------------------------------------------------
+function BanditDialogues.categoryHasVisibleOptions(category_uniqueId, relationship)
+    -- Check direct dialogue options
+    for _, dialogList in pairs(BanditDialogues.dialogOptions) do
+        for _, dialog in ipairs(dialogList) do
+            if dialog.inside_category == category_uniqueId then
+                local professionOk = true
+                if dialog.required_professions and relationship then
+                    professionOk = false
+                    for _, prof in ipairs(dialog.required_professions) do
+                        if prof == relationship.profession then
+                            professionOk = true
+                            break
+                        end
+                    end
+                end
+                if professionOk then
+                    return true
+                end
+            end
+        end
+    end
+
+    -- Check subcategories recursively
+    for _, categoryList in pairs(BanditDialogues.categories) do
+        for _, category in ipairs(categoryList) do
+            if category.inside_category == category_uniqueId then
+                if BanditDialogues.categoryHasVisibleOptions(category.unique_id, relationship) then
+                    return true
+                end
+            end
+        end
+    end
+
+    return false
 end
 
 ------------------------------------------------
@@ -197,14 +266,16 @@ function BanditDialogues.loadSubMenusForCategory(player, context, category_uniqu
         for _, category in ipairs(categoryList) do
             if relationship.relation >= category.min_relation then
                 if category.inside_category == category_uniqueId and not addedCategories[category.unique_id] then
-                    friendlyOption = context:addOption(category.name)
-                    friendlyContext = context:getNew(context)
-                    context:addSubMenu(friendlyOption, friendlyContext)
+                    if BanditDialogues.categoryHasVisibleOptions(category.unique_id, relationship) then
+                        friendlyOption = context:addOption(category.name)
+                        friendlyContext = context:getNew(context)
+                        context:addSubMenu(friendlyOption, friendlyContext)
 
-                    addedCategories[category.unique_id] = true
+                        addedCategories[category.unique_id] = true
 
-                    BanditDialogues.loadSubMenusForCategory(player, friendlyContext, category.unique_id, zombie)
-                    BanditDialogues.loadDialogOptionsForCategory(player, friendlyContext, category.unique_id, zombie)
+                        BanditDialogues.loadSubMenusForCategory(player, friendlyContext, category.unique_id, zombie)
+                        BanditDialogues.loadDialogOptionsForCategory(player, friendlyContext, category.unique_id, zombie)
+                    end
                 end
             end
         end
@@ -217,15 +288,30 @@ end
 function BanditDialogues.loadDialogOptionsForCategory(player, context, category_uniqueId, zombie)
     local addedDialogOptions = {}
 
+    local relationship = BanditDialogues.getCompanionRelationship(player, zombie)
+
     for dialogUniqueId, dialogList in pairs(BanditDialogues.dialogOptions) do
         for _, dialog in ipairs(dialogList) do
             if dialog.inside_category == category_uniqueId and not addedDialogOptions[dialog.unique_id] then
-                
-                context:addOption(dialog.name, player, function() 
-                    BanditDialogues.doRandomDialogue(player, zombie, dialog.unique_id)
-                end)
 
-                addedDialogOptions[dialog.unique_id] = true
+                -- Check profession requirement
+                local professionOk = true
+                if dialog.required_professions and relationship then
+                    professionOk = false
+                    for _, prof in ipairs(dialog.required_professions) do
+                        if prof == relationship.profession then
+                            professionOk = true
+                            break
+                        end
+                    end
+                end
+
+                if professionOk then
+                    context:addOption(dialog.name, player, function()
+                        BanditDialogues.doRandomDialogue(player, zombie, dialog.unique_id)
+                    end)
+                    addedDialogOptions[dialog.unique_id] = true
+                end
             end
         end
     end
@@ -499,6 +585,52 @@ function BanditDialogues.loadDialogues()
 
     BanditDialogues.addCategory("none", "debug", "[Debug]", -100)
     BanditDialogues.addDialogOption("debug", "reset-relationship", "Reset Relation", -100)
+
+    -- ===================================================================================
+    -- Expertise (profession-locked, requires relation >= 15)
+    BanditDialogues.addCategory("friendly", "expertise", getText("IGUI_BanditDialog_Category_Expertise"), 15)
+
+    -- Carpentry (Carpenter)
+    BanditDialogues.addDialogOption("expertise", "skill-carpentry", getText("IGUI_BanditDialog_Option_AskAboutCarpentry"), 0, {"Carpenter"})
+    BanditDialogues.addDialogue("skill-carpentry", getText("IGUI_BanditDialog_Q_SkillCarpentry_1"), getText("IGUI_BanditDialog_A_SkillCarpentry_1"), 3, 6, 1, 4, nil, "Carpentry", 10, 20)
+    BanditDialogues.addDialogue("skill-carpentry", getText("IGUI_BanditDialog_Q_SkillCarpentry_2"), getText("IGUI_BanditDialog_A_SkillCarpentry_2"), 2, 5, 1, 4, nil, "Carpentry", 8, 18)
+    BanditDialogues.addDialogue("skill-carpentry", getText("IGUI_BanditDialog_Q_SkillCarpentry_3"), getText("IGUI_BanditDialog_A_SkillCarpentry_3"), 3, 6, 2, 5, nil, "Carpentry", 12, 22)
+
+    -- Mechanics (Mechanic)
+    BanditDialogues.addDialogOption("expertise", "skill-mechanics", getText("IGUI_BanditDialog_Option_AskAboutMechanics"), 0, {"Mechanic"})
+    BanditDialogues.addDialogue("skill-mechanics", getText("IGUI_BanditDialog_Q_SkillMechanics_1"), getText("IGUI_BanditDialog_A_SkillMechanics_1"), 3, 6, 1, 4, nil, "Mechanics", 10, 20)
+    BanditDialogues.addDialogue("skill-mechanics", getText("IGUI_BanditDialog_Q_SkillMechanics_2"), getText("IGUI_BanditDialog_A_SkillMechanics_2"), 2, 5, 1, 4, nil, "Mechanics", 8, 18)
+    BanditDialogues.addDialogue("skill-mechanics", getText("IGUI_BanditDialog_Q_SkillMechanics_3"), getText("IGUI_BanditDialog_A_SkillMechanics_3"), 3, 6, 2, 5, nil, "Mechanics", 12, 22)
+
+    -- Cooking (Cook)
+    BanditDialogues.addDialogOption("expertise", "skill-cooking", getText("IGUI_BanditDialog_Option_AskAboutCooking"), 0, {"Cook"})
+    BanditDialogues.addDialogue("skill-cooking", getText("IGUI_BanditDialog_Q_SkillCooking_1"), getText("IGUI_BanditDialog_A_SkillCooking_1"), 3, 6, 1, 4, nil, "Cooking", 10, 20)
+    BanditDialogues.addDialogue("skill-cooking", getText("IGUI_BanditDialog_Q_SkillCooking_2"), getText("IGUI_BanditDialog_A_SkillCooking_2"), 2, 5, 1, 4, nil, "Cooking", 8, 18)
+    BanditDialogues.addDialogue("skill-cooking", getText("IGUI_BanditDialog_Q_SkillCooking_3"), getText("IGUI_BanditDialog_A_SkillCooking_3"), 3, 6, 2, 5, nil, "Cooking", 12, 22)
+
+    -- Farming (Farmer)
+    BanditDialogues.addDialogOption("expertise", "skill-farming", getText("IGUI_BanditDialog_Option_AskAboutFarming"), 0, {"Farmer"})
+    BanditDialogues.addDialogue("skill-farming", getText("IGUI_BanditDialog_Q_SkillFarming_1"), getText("IGUI_BanditDialog_A_SkillFarming_1"), 3, 6, 1, 4, nil, "Farming", 10, 20)
+    BanditDialogues.addDialogue("skill-farming", getText("IGUI_BanditDialog_Q_SkillFarming_2"), getText("IGUI_BanditDialog_A_SkillFarming_2"), 2, 5, 1, 4, nil, "Farming", 8, 18)
+    BanditDialogues.addDialogue("skill-farming", getText("IGUI_BanditDialog_Q_SkillFarming_3"), getText("IGUI_BanditDialog_A_SkillFarming_3"), 3, 6, 2, 5, nil, "Farming", 12, 22)
+
+    -- First Aid (Doctor, Nurse, Firefighter)
+    BanditDialogues.addDialogOption("expertise", "skill-firstaid", getText("IGUI_BanditDialog_Option_AskAboutFirstAid"), 0, {"Doctor", "Nurse", "Firefighter"})
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_1"), getText("IGUI_BanditDialog_A_SkillFirstAid_1"), 3, 6, 1, 4, nil, "Doctor", 10, 20)
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_2"), getText("IGUI_BanditDialog_A_SkillFirstAid_2"), 2, 5, 1, 4, nil, "Doctor", 8, 18)
+    BanditDialogues.addDialogue("skill-firstaid", getText("IGUI_BanditDialog_Q_SkillFirstAid_3"), getText("IGUI_BanditDialog_A_SkillFirstAid_3"), 3, 6, 2, 5, nil, "Doctor", 12, 22)
+
+    -- Electrical (Engineer, Programmer)
+    BanditDialogues.addDialogOption("expertise", "skill-electrical", getText("IGUI_BanditDialog_Option_AskAboutElectrical"), 0, {"Engineer", "Programmer"})
+    BanditDialogues.addDialogue("skill-electrical", getText("IGUI_BanditDialog_Q_SkillElectrical_1"), getText("IGUI_BanditDialog_A_SkillElectrical_1"), 3, 6, 1, 4, nil, "Electricity", 10, 20)
+    BanditDialogues.addDialogue("skill-electrical", getText("IGUI_BanditDialog_Q_SkillElectrical_2"), getText("IGUI_BanditDialog_A_SkillElectrical_2"), 2, 5, 1, 4, nil, "Electricity", 8, 18)
+    BanditDialogues.addDialogue("skill-electrical", getText("IGUI_BanditDialog_Q_SkillElectrical_3"), getText("IGUI_BanditDialog_A_SkillElectrical_3"), 3, 6, 2, 5, nil, "Electricity", 12, 22)
+
+    -- Aiming (Soldier, Police)
+    BanditDialogues.addDialogOption("expertise", "skill-aiming", getText("IGUI_BanditDialog_Option_AskAboutAiming"), 0, {"Soldier", "Police"})
+    BanditDialogues.addDialogue("skill-aiming", getText("IGUI_BanditDialog_Q_SkillAiming_1"), getText("IGUI_BanditDialog_A_SkillAiming_1"), 3, 6, 1, 4, nil, "Aiming", 10, 20)
+    BanditDialogues.addDialogue("skill-aiming", getText("IGUI_BanditDialog_Q_SkillAiming_2"), getText("IGUI_BanditDialog_A_SkillAiming_2"), 2, 5, 1, 4, nil, "Aiming", 8, 18)
+    BanditDialogues.addDialogue("skill-aiming", getText("IGUI_BanditDialog_Q_SkillAiming_3"), getText("IGUI_BanditDialog_A_SkillAiming_3"), 3, 6, 2, 5, nil, "Aiming", 12, 22)
 end
 
 BanditDialogues.loadDialogues()
